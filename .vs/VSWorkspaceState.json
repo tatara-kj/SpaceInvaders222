@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SpaceIntruder"
   ],
-  "SelectedNode": "\\SpaceIntruder.sln",
+  "SelectedNode": "\\SpaceIntruder\\MainWindow.xaml",
   "PreviewInSolutionExplorer": false
 }

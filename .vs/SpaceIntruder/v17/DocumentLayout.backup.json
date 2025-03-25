@@ -1,30 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\",
+  "WorkspaceRootPath": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\uczen\\source\\repos\\spaceintruder\\spaceintruder\\glowna.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\glowna.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\uczen\\source\\repos\\spaceintruder\\spaceintruder\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\jtataruch1\\downloads\\spaceintruder (1)\\spaceintruder\\spaceintruder\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\uczen\\source\\repos\\spaceintruder\\spaceintruder\\glowna.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\jtataruch1\\downloads\\spaceintruder (1)\\spaceintruder\\spaceintruder\\glowna.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\glowna.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\jtataruch1\\downloads\\spaceintruder (1)\\spaceintruder\\spaceintruder\\glowna.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\glowna.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\uczen\\source\\repos\\spaceintruder\\spaceintruder\\gra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\gra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\jtataruch1\\downloads\\spaceintruder (1)\\spaceintruder\\spaceintruder\\spaceintruder.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\spaceintruder.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\uczen\\source\\repos\\spaceintruder\\spaceintruder\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\jtataruch1\\downloads\\spaceintruder (1)\\spaceintruder\\spaceintruder\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\uczen\\source\\repos\\spaceintruder\\spaceintruder\\spaceintruder.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\spaceintruder.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\jtataruch1\\downloads\\spaceintruder (1)\\spaceintruder\\spaceintruder\\gra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\gra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,15 +34,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "SpaceIntruder\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\MainWindow.xaml.cs",
               "RelativeToolTip": "SpaceIntruder\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -51,23 +55,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "gra.xaml",
-              "DocumentMoniker": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\gra.xaml",
+              "DocumentMoniker": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\gra.xaml",
               "RelativeDocumentMoniker": "SpaceIntruder\\gra.xaml",
-              "ToolTip": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\gra.xaml",
+              "ToolTip": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\gra.xaml",
               "RelativeToolTip": "SpaceIntruder\\gra.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-24T07:32:29.459Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T07:32:29.459Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SpaceIntruder",
-              "DocumentMoniker": "C:\\Users\\uczen\\Source\\Repos\\SpaceIntruder\\SpaceIntruder\\SpaceIntruder.csproj",
+              "DocumentIndex": 3,
+              "Title": "SpaceIntruder.csproj",
+              "DocumentMoniker": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\SpaceIntruder.csproj",
               "RelativeDocumentMoniker": "SpaceIntruder\\SpaceIntruder.csproj",
-              "ToolTip": "C:\\Users\\uczen\\Source\\Repos\\SpaceIntruder\\SpaceIntruder\\SpaceIntruder.csproj",
+              "ToolTip": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\SpaceIntruder.csproj",
               "RelativeToolTip": "SpaceIntruder\\SpaceIntruder.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -78,9 +81,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "glowna.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\glowna.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\glowna.xaml.cs",
               "RelativeDocumentMoniker": "SpaceIntruder\\glowna.xaml.cs",
-              "ToolTip": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\glowna.xaml.cs",
+              "ToolTip": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\glowna.xaml.cs",
               "RelativeToolTip": "SpaceIntruder\\glowna.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -89,11 +92,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "glowna.xaml",
-              "DocumentMoniker": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\glowna.xaml",
+              "DocumentMoniker": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\glowna.xaml",
               "RelativeDocumentMoniker": "SpaceIntruder\\glowna.xaml",
-              "ToolTip": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\glowna.xaml",
+              "ToolTip": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\glowna.xaml",
               "RelativeToolTip": "SpaceIntruder\\glowna.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-24T07:17:42.48Z",
@@ -101,11 +104,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\MainWindow.xaml",
               "RelativeDocumentMoniker": "SpaceIntruder\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\uczen\\source\\repos\\SpaceIntruder\\SpaceIntruder\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\MainWindow.xaml",
               "RelativeToolTip": "SpaceIntruder\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-24T07:09:52.403Z",

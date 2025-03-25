@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\SpaceIntruder.csproj": {}
+    "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\SpaceIntruder.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\SpaceIntruder.csproj": {
+    "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\SpaceIntruder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\SpaceIntruder.csproj",
+        "projectUniqueName": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\SpaceIntruder.csproj",
         "projectName": "SpaceIntruder",
-        "projectPath": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\SpaceIntruder.csproj",
+        "projectPath": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\SpaceIntruder.csproj",
         "packagesPath": "C:\\Users\\jtataruch1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jtataruch1\\Downloads\\SpaceIntruder (1)\\SpaceIntruder\\SpaceIntruder\\obj\\",
+        "outputPath": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
