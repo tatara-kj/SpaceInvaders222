@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpaceIntruder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fecfb9d38c6637ad0d6cfcf5f453cc543b01150")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a183c0b0b02cffd0d30407d854bd64e9cd2e2046")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpaceIntruder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpaceIntruder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
