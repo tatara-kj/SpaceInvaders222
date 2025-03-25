@@ -18,7 +18,7 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
 
             <!-- Tytuł gry -->
-            <TextBlock Text="Space Invaders" FontSize="64" FontWeight="Bold" Foreground="Orange" HorizontalAlignment="Center" />
+            <TextBlock FontSize="64" FontWeight="Bold" Foreground="Orange" HorizontalAlignment="Center" ><Run Text="Space "/><Run Language="pl-pl" Text="rrr"/><Run Text="nvaders"/></TextBlock>
 
             <!-- Przycisk Nowa Gra -->
             <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center">

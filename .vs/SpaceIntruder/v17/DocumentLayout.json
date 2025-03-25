@@ -34,20 +34,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "SpaceIntruder\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml.cs",
-              "RelativeToolTip": "SpaceIntruder\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T07:27:33.292Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 5,
@@ -97,6 +85,18 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "SpaceIntruder\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml.cs",
+              "RelativeToolTip": "SpaceIntruder\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T07:27:33.292Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml",
@@ -104,8 +104,7 @@
               "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml",
               "RelativeToolTip": "SpaceIntruder\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-24T07:09:52.403Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T07:09:52.403Z"
             }
           ]
         }
