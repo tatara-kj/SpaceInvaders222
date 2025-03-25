@@ -9,11 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="logo.png" />
     <None Remove="tlo.jpg" />
+    <None Remove="zdjecia\DeliriumNcv-Vm5e.ttf" />
+    <None Remove="zdjecia\DeliriumNeonNcv-J1AK.ttf" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="logo.png" />
     <Resource Include="tlo.jpg" />
+    <Resource Include="zdjecia\DeliriumNcv-Vm5e.ttf" />
+    <Resource Include="zdjecia\DeliriumNeonNcv-J1AK.ttf" />
   </ItemGroup>
 
 </Project>

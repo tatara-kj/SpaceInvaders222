@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       Background="White"
       Width="900" Height="800"
-      Title="glowna">
+      Title="glowna" FontFamily="Bauhaus 93">
 
     <Grid>
         <Grid.Background>
@@ -15,13 +15,13 @@
         </Grid.Background>
 
         <!-- Menu główne -->
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="475" Width="568">
 
             <!-- Tytuł gry -->
-            <TextBlock FontSize="64" FontWeight="Bold" Foreground="Orange" HorizontalAlignment="Center" ><Run Text="Space "/><Run Language="pl-pl" Text="rrr"/><Run Text="nvaders"/></TextBlock>
+            <Image Source="/logo.png" Width="471" Height="186" Margin="0,0,0,20"/>
 
             <!-- Przycisk Nowa Gra -->
-            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center">
+            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center" FontFamily="Bauhaus 93">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Black" />
