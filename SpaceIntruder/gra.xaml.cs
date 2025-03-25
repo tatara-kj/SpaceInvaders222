@@ -101,7 +101,15 @@ namespace SpaceIntruder
 
         private void EnemyBulletMaker(double x, double y)
         {
-
+            Rectangle enemyBullets = new Rectangle
+            {
+                Tag = "enemyBullet",
+                Height = 40,
+                Width = 15,
+                Fill = Brushes.Yellow,
+                Stroke = Brushes.Black,
+                StrokeThickness = 5
+            };
         }
 
         private void MakeEnemies(double limit)
