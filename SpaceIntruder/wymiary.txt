@@ -1,0 +1,29 @@
+Przykładowe wymiary (w px)
+Statek gracza (na dole ekranu)
+Szerokość: 40–60 px
+
+Wysokość: 20–30 px
+
+Obcy (inwazja)
+Szerokość: 30–50 px
+
+Wysokość: 20–40 px
+
+Odstęp między obcymi: 10–20 px
+
+Pociski (gracza i wrogów)
+Szerokość: 5–8 px
+
+Wysokość: 15–20 px
+
+Bunkry (osłony)
+Szerokość: 60–80 px
+
+Wysokość: 30–50 px
+
+Rekomendowana rozdzielczość okna
+640 × 480 px (klasyczna rozdzielczość retro)
+
+800 × 600 px (więcej miejsca na lepszą grafikę)
+
+1024 × 768 px (dla nowoczesnej wersji)

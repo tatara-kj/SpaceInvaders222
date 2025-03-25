@@ -9,17 +9,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="logo.png" />
     <None Remove="tlo.jpg" />
-    <None Remove="zdjecia\DeliriumNcv-Vm5e.ttf" />
-    <None Remove="zdjecia\DeliriumNeonNcv-J1AK.ttf" />
+    <None Remove="zdjecia\invader1.gif" />
+    <None Remove="zdjecia\invader2.gif" />
+    <None Remove="zdjecia\invader3.gif" />
+    <None Remove="zdjecia\invader4.gif" />
+    <None Remove="zdjecia\invader5.gif" />
+    <None Remove="zdjecia\invader6.gif" />
+    <None Remove="zdjecia\invader7.gif" />
+    <None Remove="zdjecia\invader8.gif" />
+    <None Remove="zdjecia\player.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="logo.png" />
     <Resource Include="tlo.jpg" />
-    <Resource Include="zdjecia\DeliriumNcv-Vm5e.ttf" />
-    <Resource Include="zdjecia\DeliriumNeonNcv-J1AK.ttf" />
+    <Resource Include="zdjecia\invader1.gif" />
+    <Resource Include="zdjecia\invader2.gif" />
+    <Resource Include="zdjecia\invader3.gif" />
+    <Resource Include="zdjecia\invader4.gif" />
+    <Resource Include="zdjecia\invader5.gif" />
+    <Resource Include="zdjecia\invader6.gif" />
+    <Resource Include="zdjecia\invader7.gif" />
+    <Resource Include="zdjecia\invader8.gif" />
+    <Resource Include="zdjecia\player.png" />
   </ItemGroup>
 
 </Project>
