@@ -9,6 +9,12 @@
       Title="gra">
 
     <Grid>
-        
+        <Canvas Name="MyCanvas" Focusable="True" Background="Black" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
+            <Label Name="EnemiesLeft" Foreground="White" FontSize="16" FontWeight="ExtraBold">
+                Enemies left: 0
+            </Label>
+
+            <Rectangle Name="Player" Fill="White" Height="65" Width="56" Canvas.Left="372" Canvas.Top="314" HorizontalAlignment="Center" VerticalAlignment="Top"></Rectangle>
+        </Canvas>
     </Grid>
 </Page>
