@@ -19,7 +19,7 @@ namespace SpaceIntruder
         public MainWindow()
         {
             InitializeComponent();
-            GlownaStrona.Navigate(new glowna());
+            GlownaStrona.Navigate(new gra());
         }
     }
 }
