@@ -1,0 +1,100 @@
+﻿<Page x:Class="SpaceIntruder.instrukcje"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SpaceIntruder"
+      mc:Ignorable="d" 
+      Width="900" Height="800"
+      Title="instrukcje">
+
+    <Page.Resources>
+        <!-- Definicja stylów dla tekstu i przycisków -->
+        <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style x:Key="InstructionTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <!-- Definicja animacji dla przycisku powrotu -->
+        <Storyboard x:Key="ButtonAnimation" RepeatBehavior="Forever" AutoReverse="True">
+            <DoubleAnimation 
+                Storyboard.TargetProperty="(Button.RenderTransform).(TranslateTransform.Y)" 
+                From="0" To="5" Duration="0:0:0.5"/>
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid>
+        <!-- Tło gry -->
+        <Grid.Background>
+            <ImageBrush ImageSource="/tlo.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="430" Width="696">
+            <!-- Tytuł -->
+            <TextBlock Style="{StaticResource HeaderTextStyle}">
+                Instrukcje do gry Space Invaders
+            </TextBlock>
+
+            <!-- Instrukcje ogólne -->
+            <TextBlock Style="{StaticResource InstructionTextStyle}">
+                Celem gry jest obrona przed inwazją obcych statków. Strzelaj do nadlatujących przeciwników i zdobywaj punkty!
+            </TextBlock>
+
+            <!-- Instrukcje sterowania -->
+            <TextBlock Style="{StaticResource InstructionTextStyle}" FontWeight="Bold">
+                Sterowanie:<LineBreak/>
+                - Lewo:  Strzałka w lewo lub A<LineBreak/>
+                - Prawo: klawisze Strzałka w prawo lub D<LineBreak/>
+                - Strzał: Spacja
+            </TextBlock>
+
+            <!-- Dodatkowe informacje -->
+            <TextBlock Style="{StaticResource InstructionTextStyle}">
+                Uważaj na pociski wroga! Gra kończy się, gdy stracisz wszystkie życia.
+            </TextBlock>
+            <Button Width="280" Height="70" Foreground="White" FontSize="48" HorizontalAlignment="Center" FontFamily="Bauhaus 93" Click="powrot_menu" >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Black" />
+                        <Setter Property="Content" Value="Powrot" />
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <!-- Zmieniamy szablon przycisku, aby usunąć efekty tła -->
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Yellow"/>
+                                <Setter Property="FontSize" Value="28"/>
+                                <Setter Property="Content" Value="&lt;&lt; menu &gt;&gt;" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Przycisk powrotu do menu -->
+        </StackPanel>
+    </Grid>
+</Page>

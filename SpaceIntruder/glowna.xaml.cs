@@ -50,5 +50,21 @@ namespace SpaceIntruder
             // Kod do zamknięcia gry
             Application.Current.Shutdown();
         }
+
+        private void nowa_gra(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new gra());
+        }
+
+        private void instrukcje_click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new instrukcje());
+            
+        }
+
+        private void wyjdz_click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\tmarcinek\Documents\GitHub\SpaceInvaders222\SpaceIntruder\obj\Debug\net8.0-windows\
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\obj\Debug\net8.0-windows\
 SpaceIntruder
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\tmarcinek\Documents\GitHub\SpaceInvaders222\SpaceIntruder\App.xaml
-3-384962183
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\App.xaml
+4-1389993859
 
-61164079144
-1981839832580
-glowna.xaml;gra.xaml;MainWindow.xaml;
+720303990
+198-556154604
+glowna.xaml;gra.xaml;instrukcje.xaml;MainWindow.xaml;
 
 False
 

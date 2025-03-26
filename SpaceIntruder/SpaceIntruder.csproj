@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="logo.png" />
     <None Remove="tlo.jpg" />
     <None Remove="zdjecia\invader1.gif" />
     <None Remove="zdjecia\invader2.gif" />
@@ -22,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="tlo.jpg" />
     <Resource Include="zdjecia\invader1.gif" />
     <Resource Include="zdjecia\invader2.gif" />

@@ -21,7 +21,7 @@
             <Image Source="/logo.png" Width="471" Height="186" Margin="0,0,0,20"/>
 
             <!-- Przycisk Nowa Gra -->
-            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center" FontFamily="Bauhaus 93">
+            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center" FontFamily="Bauhaus 93" Click="nowa_gra">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Black" />
@@ -51,7 +51,7 @@
             </Button>
 
             <!-- Przycisk Instrukcje -->
-            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center">
+            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center" Click="instrukcje_click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Black" />
@@ -109,7 +109,7 @@
             </Button>
 
             <!-- Przycisk Wyjdz -->
-            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center">
+            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center" Click="wyjdz_click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Black" />
