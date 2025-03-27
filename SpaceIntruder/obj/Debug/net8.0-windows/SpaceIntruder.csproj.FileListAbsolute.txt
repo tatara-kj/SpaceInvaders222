@@ -75,3 +75,10 @@ D:\jtatruch_git\SpaceInvader222\SpaceIntruder\obj\Debug\net8.0-windows\SpaceIntr
 D:\jtatruch_git\SpaceInvader222\SpaceIntruder\obj\Debug\net8.0-windows\ref\SpaceIntruder.dll
 D:\jtatruch_git\SpaceInvader222\SpaceIntruder\obj\Debug\net8.0-windows\instrukcje.g.cs
 D:\jtatruch_git\SpaceInvader222\SpaceIntruder\obj\Debug\net8.0-windows\instrukcje.baml
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\menuMusic.mp3
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\obj\Debug\net8.0-windows\SpaceIntruder_Content.g.cs
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\battleMusic.mp3
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\buttonClick.wav
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\enemyDeath.wav
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\spaceshipDeath.wav
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\spaceshipShot.wav

@@ -20,6 +20,14 @@ namespace SpaceIntruder
         {
             InitializeComponent();
             GlownaStrona.Navigate(new glowna());
+            string sciezka = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds", "menuMusic.mp3");
+
+
+
+            backgroundMusic.Source = new Uri(sciezka, UriKind.Absolute);
+            backgroundMusic.Volume = 0.25;  // 25% głośności
+            backgroundMusic.LoadedBehavior = MediaState.Manual; // Zapewnia kontrolę nad odtwarzaniem
+            backgroundMusic.Play();
         }
     }
 }
