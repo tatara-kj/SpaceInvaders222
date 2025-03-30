@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -48,11 +49,12 @@ namespace SpaceIntruder
             Player.Fill = _playerSkin;
 
             MyCanvas.Focus();
-            MakeEnemies(10);
+            MakeEnemies(15);
         }
 
         private void GameLoop(object? sender, EventArgs e)
         {
+            EnemiesLeft.Content = "Enemies left: " + _totalEnemies;
             Rect playerHitBox = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);
 
             if (_goLeft && Canvas.GetLeft(Player) > 0)
@@ -84,6 +86,19 @@ namespace SpaceIntruder
                     }
 
                     Rect bullet = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                    foreach (var y in MyCanvas.Children.OfType<Rectangle>()) {
+                        if (y is Rectangle && (string)y.Tag == "enemy") {
+                            Rect enemy = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+
+                            if (bullet.IntersectsWith(enemy)) {
+                                _itemsToRemove.Add(x);
+                                _itemsToRemove.Add(y);
+                                _totalEnemies -= 1;
+                                break;
+                            }
+                        }
+                    }
                 }
 
                 if (x is Rectangle && (string)x.Tag == "enemy")
@@ -97,6 +112,10 @@ namespace SpaceIntruder
                     }
 
                     Rect enemyHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                    if (playerHitBox.IntersectsWith(enemyHitBox)) {
+                        ShowGameOverScreen("Koniec gry! Zabił cię najeźdźca");
+                    }
                 }
                 if (x is Rectangle && (string)x.Tag == "enemyBullet")
                 {
@@ -108,12 +127,24 @@ namespace SpaceIntruder
                     }
 
                     Rect enemyBulletHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                    if (playerHitBox.IntersectsWith(enemyBulletHitBox)) {
+                        ShowGameOverScreen("Koniec gry! Zabił cię wrogi pocisk");
+                    }
                 }
             }
 
             foreach (Rectangle i in _itemsToRemove)
             {
                 MyCanvas.Children.Remove(i);
+            }
+
+            if(_totalEnemies < 5) {
+                _enemySpeed = 12;
+            }
+
+            if(_totalEnemies < 1) {
+                ShowGameOverScreen("Wygrałeś!");
             }
         }
 
@@ -123,27 +154,14 @@ namespace SpaceIntruder
             {
                 _goLeft = true;
             }
+
             if (e.Key == Key.Right || e.Key == Key.D)
             {
                 _goRight = true;
             }
-        }
 
-        private void KeyIsUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Left || e.Key == Key.A)
-            {
-                _goLeft = false;
-            }
-            if (e.Key == Key.Right || e.Key == Key.D)
-            {
-                _goRight = false;
-            }
-
-            if (e.Key == Key.Space)
-            {
-                Rectangle newBullet = new Rectangle
-                {
+            if (e.Key == Key.Space) {
+                Rectangle newBullet = new Rectangle {
                     Tag = "bullet",
                     Height = 20,
                     Width = 5,
@@ -154,6 +172,24 @@ namespace SpaceIntruder
                 Canvas.SetTop(newBullet, Canvas.GetTop(Player) + newBullet.Height);
                 Canvas.SetLeft(newBullet, Canvas.GetLeft(Player) + Player.Width / 2);
                 MyCanvas.Children.Add(newBullet);
+            }
+
+            if (e.Key == Key.Enter && _isGameOver) {
+                Process.Start(Process.GetCurrentProcess().MainModule.FileName);
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void KeyIsUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Left || e.Key == Key.A)
+            {
+                _goLeft = false;
+            }
+
+            if (e.Key == Key.Right || e.Key == Key.D)
+            {
+                _goRight = false;
             }
         }
 
@@ -235,7 +271,9 @@ namespace SpaceIntruder
 
         private void ShowGameOverScreen(string msg)
         {
-
+            _isGameOver = true;
+            _gameTimer.Stop();
+            EnemiesLeft.Content = msg + "   Naciśnij Enter aby zagrać ponownie";
         }
     }
 }
