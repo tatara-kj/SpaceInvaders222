@@ -10,11 +10,15 @@
 
     <Grid>
         <Canvas Name="MyCanvas" Focusable="True" Background="Black" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
-            <Label Name="EnemiesLeft" Foreground="White" FontSize="16" FontWeight="ExtraBold">
-                Enemies left: 0
+            <Label Name="LivesAmount" Foreground="White" FontSize="16" FontWeight="ExtraBold">
+                Ilość żyć: 3
+            </Label>
+
+            <Label Name="WavesLeft" Foreground="White" FontSize="16" FontWeight="ExtraBold" HorizontalAlignment="Left" Canvas.Left="622" VerticalAlignment="Center">
+                Pozostałe fale: 1
             </Label>
 
             <Rectangle Name="Player" Fill="White" Height="65" Width="56" Canvas.Left="372" Canvas.Top="314" HorizontalAlignment="Center" VerticalAlignment="Top"></Rectangle>
-        </Canvas> 
+        </Canvas>
     </Grid>
 </Page>

@@ -26,17 +26,28 @@ namespace SpaceIntruder
         DispatcherTimer _gameTimer = new DispatcherTimer();
         ImageBrush _playerSkin = new ImageBrush();
         List<Rectangle> _itemsToRemove = new List<Rectangle>();
+        int[] _level1Waves = { 5, 10, 15 };
         bool _goLeft, _goRight;
         bool _isGameOver;
+        bool _isRecoveringFromDmg;
+        float _dmgRecoveryTimer = 2.5f;
+        float _savedDmgRecoveryTimer;
+        float _pShootingCooldown = 0.8f;
+        float _savedPShootingCooldown;
         int _enemyImages;
         int _bulletTimer;
         int _bulletTimerLimit = 90;
         int _totalEnemies;
-        int _enemySpeed = 6;
+        int _enemySpeed = 4;
+        int _livesAmount = 3;
+        int _currentWave = 0;
 
         public gra()
         {
             InitializeComponent();
+
+            _savedDmgRecoveryTimer = _dmgRecoveryTimer;
+            _savedPShootingCooldown = _pShootingCooldown;
 
             Application.Current.MainWindow.Height = 500;
             Application.Current.MainWindow.Width = 800;
@@ -49,12 +60,34 @@ namespace SpaceIntruder
             Player.Fill = _playerSkin;
 
             MyCanvas.Focus();
-            MakeEnemies(15);
+            MakeEnemies(_level1Waves[0]);
         }
 
         private void GameLoop(object? sender, EventArgs e)
         {
-            EnemiesLeft.Content = "Enemies left: " + _totalEnemies;
+            _pShootingCooldown -= 0.1f;
+
+            if(_pShootingCooldown < 0)
+            {
+                _pShootingCooldown = _savedPShootingCooldown;
+
+                Rectangle newBullet = new Rectangle
+                {
+                    Tag = "bullet",
+                    Height = 20,
+                    Width = 5,
+                    Fill = Brushes.White,
+                    Stroke = Brushes.Red
+                };
+
+                Canvas.SetTop(newBullet, Canvas.GetTop(Player) + newBullet.Height);
+                Canvas.SetLeft(newBullet, Canvas.GetLeft(Player) + Player.Width / 2 - newBullet.Width / 2);
+                MyCanvas.Children.Add(newBullet);
+            }
+
+            WavesLeft.Content = "Pozostałe fale: " + (_level1Waves.Length - _currentWave - 1);
+
+            RecoveryTimer();
             Rect playerHitBox = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);
 
             if (_goLeft && Canvas.GetLeft(Player) > 0)
@@ -73,6 +106,8 @@ namespace SpaceIntruder
                 EnemyBulletMaker(Canvas.GetLeft(Player) + 20, 10);
                 _bulletTimer = _bulletTimerLimit;
             }
+
+            int enemiesDetected = 0;
 
             foreach (var x in MyCanvas.Children.OfType<Rectangle>())
             {
@@ -103,6 +138,7 @@ namespace SpaceIntruder
 
                 if (x is Rectangle && (string)x.Tag == "enemy")
                 {
+                    enemiesDetected++;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) + _enemySpeed);
 
                     if(Canvas.GetLeft(x) > 820)
@@ -114,7 +150,7 @@ namespace SpaceIntruder
                     Rect enemyHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
                     if (playerHitBox.IntersectsWith(enemyHitBox)) {
-                        ShowGameOverScreen("Koniec gry! Zabił cię najeźdźca");
+                        ProcessDmgTaken("Koniec gry! Zabił cię najeźdźca");
                     }
                 }
                 if (x is Rectangle && (string)x.Tag == "enemyBullet")
@@ -129,7 +165,7 @@ namespace SpaceIntruder
                     Rect enemyBulletHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
                     if (playerHitBox.IntersectsWith(enemyBulletHitBox)) {
-                        ShowGameOverScreen("Koniec gry! Zabił cię wrogi pocisk");
+                        ProcessDmgTaken("Koniec gry! Zabił cię wrogi pocisk");
                     }
                 }
             }
@@ -139,12 +175,18 @@ namespace SpaceIntruder
                 MyCanvas.Children.Remove(i);
             }
 
-            if(_totalEnemies < 5) {
-                _enemySpeed = 12;
-            }
+            if(enemiesDetected < 1) {
+                _currentWave++;
 
-            if(_totalEnemies < 1) {
-                ShowGameOverScreen("Wygrałeś!");
+                if(_currentWave > _level1Waves.Length - 1)
+                {
+                    ShowGameOverScreen("Wygrałeś!");
+                }
+                else
+                {
+                    MakeEnemies(_level1Waves[_currentWave]);
+                    _enemySpeed += 2;
+                }
             }
         }
 
@@ -163,14 +205,14 @@ namespace SpaceIntruder
             if (e.Key == Key.Space) {
                 Rectangle newBullet = new Rectangle {
                     Tag = "bullet",
-                    Height = 20,
-                    Width = 5,
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Red
+                    Height = 30,
+                    Width = 12,
+                    Fill = Brushes.Blue,
+                    Stroke = Brushes.White
                 };
 
                 Canvas.SetTop(newBullet, Canvas.GetTop(Player) + newBullet.Height);
-                Canvas.SetLeft(newBullet, Canvas.GetLeft(Player) + Player.Width / 2);
+                Canvas.SetLeft(newBullet, Canvas.GetLeft(Player) + Player.Width / 2 - newBullet.Width / 2);
                 MyCanvas.Children.Add(newBullet);
             }
 
@@ -269,11 +311,42 @@ namespace SpaceIntruder
             }
         }
 
+        private void RecoveryTimer()
+        {
+            if (_isRecoveringFromDmg)
+            {
+                _dmgRecoveryTimer -= 0.1f;
+
+                if (_dmgRecoveryTimer < 0)
+                {
+                    _isRecoveringFromDmg = false;
+                    _dmgRecoveryTimer = _savedDmgRecoveryTimer;
+                }
+            }
+
+            LivesAmount.Content = "Ilość żyć: " + _livesAmount;
+        }
+
+        private void ProcessDmgTaken(string msg)
+        {
+            if (_isRecoveringFromDmg) { return; }
+
+            if(_livesAmount > 1)
+            {
+                _livesAmount--;
+                _isRecoveringFromDmg = true;
+            }
+            else
+            {
+                ShowGameOverScreen(msg);
+            }
+        }
+
         private void ShowGameOverScreen(string msg)
         {
             _isGameOver = true;
             _gameTimer.Stop();
-            EnemiesLeft.Content = msg + "   Naciśnij Enter aby zagrać ponownie";
+            LivesAmount.Content = msg + "   Naciśnij Enter aby zagrać ponownie";
         }
     }
 }
