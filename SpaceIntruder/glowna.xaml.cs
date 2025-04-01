@@ -12,7 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using PathIO = System.IO.Path;  // Alias dla System.IO.Path
+using System.IO;
+using System.Security.Cryptography;
+using System.IO;
 namespace SpaceIntruder
 {
     /// <summary>
@@ -22,33 +25,48 @@ namespace SpaceIntruder
     {
         public glowna()
         {
+        
             InitializeComponent();
+       
         }
-        private void NewGameButton_Click(object sender, RoutedEventArgs e)
+        private MediaPlayer player = new MediaPlayer();
+        private void OdtworzDzwiek()
         {
-            // Kod do uruchomienia nowej gry
-            MessageBox.Show("Nowa gra rozpoczęta!");
+        
+
+            string sciezka = PathIO.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds", "buttonClick.wav");
+
+
+            if (File.Exists(sciezka))
+            {
+                player.Stop();
+                player.Volume = 0.5 * 1.2;
+                player.Open(new Uri(sciezka, UriKind.Absolute));
+                player.Play();
+            }
+            else
+            {
+                MessageBox.Show("Plik dźwiękowy nie istnieje!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void nowa_gra(object sender, RoutedEventArgs e)
+        {
+            
+            NavigationService.Navigate(new gra());
+            OdtworzDzwiek();
         }
 
-        // Przycisk Instrukcje
-        private void InstructionsButton_Click(object sender, RoutedEventArgs e)
+        private void instrukcje_click(object sender, RoutedEventArgs e)
         {
-            // Kod do pokazania instrukcji
-            MessageBox.Show("Instrukcje gry");
+            NavigationService.Navigate(new instrukcje());
+            OdtworzDzwiek();
+
         }
 
-        // Przycisk Wyniki
-        private void HighscoreButton_Click(object sender, RoutedEventArgs e)
+        private void wyjdz_click(object sender, RoutedEventArgs e)
         {
-            // Kod do pokazania wyników
-            MessageBox.Show("Wyniki gry");
-        }
-
-        // Przycisk Wyjście
-        private void QuitButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Kod do zamknięcia gry
             Application.Current.Shutdown();
+            OdtworzDzwiek();
         }
     }
 }

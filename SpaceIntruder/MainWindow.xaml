@@ -4,11 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpaceIntruder"
-        mc:Ignorable="d" 
+        mc:Ignorable="d" Width="900" Height="800"
         Title="MainWindow" Background="Transparent">
    
     <Grid>
-
+        <MediaElement Name="backgroundMusic" 
+          HorizontalAlignment="Stretch" 
+          VerticalAlignment="Stretch" 
+          Visibility="Collapsed"
+          LoadedBehavior="Manual"
+          UnloadedBehavior="Manual"/>
 
         <Frame  x:Name="GlownaStrona" NavigationUIVisibility="Hidden"  Background="Transparent" Margin="0,0,0,10"/>
     </Grid>

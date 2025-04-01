@@ -1,14 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\tomas\\OneDrive\\Dokumenty\\GitHub\\Gry\\SpaceInvaders222\\",
+  "WorkspaceRootPath": "D:\\jtatruch_git\\SpaceInvader222\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\tomas\\onedrive\\dokumenty\\github\\gry\\spaceinvaders222\\spaceintruder\\gra.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\gra.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|d:\\jtatruch_git\\spaceinvader222\\spaceintruder\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|c:\\users\\tomas\\onedrive\\dokumenty\\github\\gry\\spaceinvaders222\\spaceintruder\\gra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\gra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|d:\\jtatruch_git\\spaceinvader222\\spaceintruder\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|d:\\jtatruch_git\\spaceinvader222\\spaceintruder\\glowna.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\glowna.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|d:\\jtatruch_git\\spaceinvader222\\spaceintruder\\instrukcje.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\instrukcje.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|d:\\jtatruch_git\\spaceinvader222\\spaceintruder\\glowna.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\glowna.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|d:\\jtatruch_git\\spaceinvader222\\spaceintruder\\instrukcje.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\instrukcje.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|d:\\jtatruch_git\\spaceinvader222\\spaceintruder\\spaceintruder.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5C869938-0C1E-4A19-85D9-B3D75C9CDEB9}|SpaceIntruder\\SpaceIntruder.csproj|solutionrelative:spaceintruder\\spaceintruder.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,87 +37,95 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 207,
-          "SelectedChildIndex": 4,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "gra.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\tomas\\OneDrive\\Dokumenty\\GitHub\\Gry\\SpaceInvaders222\\SpaceIntruder\\gra.xaml.cs",
-              "RelativeDocumentMoniker": "SpaceIntruder\\gra.xaml.cs",
-              "ToolTip": "C:\\Users\\tomas\\OneDrive\\Dokumenty\\GitHub\\Gry\\SpaceInvaders222\\SpaceIntruder\\gra.xaml.cs",
-              "RelativeToolTip": "SpaceIntruder\\gra.xaml.cs",
-              "ViewState": "AgIAAOsAAAAAAAAAAAAQwP8AAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T12:51:24.213Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 576,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{21457f7c-a428-477e-ae6d-e2b608734650}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "b8adb36f-f66f-409b-9ccf-f5dea6bc0038",
-        "Display": 1,
-        "X": 305,
-        "Y": 398,
-        "Width": 1050,
-        "Height": 592,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
           "DockedWidth": 200,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "SpaceIntruder\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml.cs*",
+              "RelativeToolTip": "SpaceIntruder\\MainWindow.xaml.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T10:59:48.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "gra.xaml",
-              "DocumentMoniker": "C:\\Users\\tomas\\OneDrive\\Dokumenty\\GitHub\\Gry\\SpaceInvaders222\\SpaceIntruder\\gra.xaml",
-              "RelativeDocumentMoniker": "SpaceIntruder\\gra.xaml",
-              "ToolTip": "C:\\Users\\tomas\\OneDrive\\Dokumenty\\GitHub\\Gry\\SpaceInvaders222\\SpaceIntruder\\gra.xaml",
-              "RelativeToolTip": "SpaceIntruder\\gra.xaml",
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "SpaceIntruder\\MainWindow.xaml",
+              "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\MainWindow.xaml*",
+              "RelativeToolTip": "SpaceIntruder\\MainWindow.xaml*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-30T20:49:37.571Z",
+              "WhenOpened": "2025-03-27T10:59:25.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SpaceIntruder",
+              "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\SpaceIntruder.csproj",
+              "RelativeDocumentMoniker": "SpaceIntruder\\SpaceIntruder.csproj",
+              "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\SpaceIntruder.csproj",
+              "RelativeToolTip": "SpaceIntruder\\SpaceIntruder.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-27T10:39:12.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "instrukcje.xaml.cs",
+              "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\instrukcje.xaml.cs",
+              "RelativeDocumentMoniker": "SpaceIntruder\\instrukcje.xaml.cs",
+              "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\instrukcje.xaml.cs",
+              "RelativeToolTip": "SpaceIntruder\\instrukcje.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T13:17:28.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "instrukcje.xaml",
+              "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\instrukcje.xaml",
+              "RelativeDocumentMoniker": "SpaceIntruder\\instrukcje.xaml",
+              "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\instrukcje.xaml",
+              "RelativeToolTip": "SpaceIntruder\\instrukcje.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-26T13:10:02.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "glowna.xaml.cs",
+              "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\glowna.xaml.cs",
+              "RelativeDocumentMoniker": "SpaceIntruder\\glowna.xaml.cs",
+              "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\glowna.xaml.cs*",
+              "RelativeToolTip": "SpaceIntruder\\glowna.xaml.cs*",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T13:27:37.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "glowna.xaml",
+              "DocumentMoniker": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\glowna.xaml",
+              "RelativeDocumentMoniker": "SpaceIntruder\\glowna.xaml",
+              "ToolTip": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\glowna.xaml*",
+              "RelativeToolTip": "SpaceIntruder\\glowna.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-25T13:27:33.844Z",
               "EditorCaption": ""
             }
           ]

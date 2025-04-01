@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="logo.png" />
+    <None Remove="sounds\battleMusic.mp3" />
+    <None Remove="sounds\buttonClick.wav" />
+    <None Remove="sounds\enemyDeath.wav" />
+    <None Remove="sounds\menuMusic.mp3" />
+    <None Remove="sounds\spaceshipDeath.wav" />
+    <None Remove="sounds\spaceshipShot.wav" />
     <None Remove="tlo.jpg" />
     <None Remove="zdjecia\invader1.gif" />
     <None Remove="zdjecia\invader2.gif" />
@@ -22,6 +29,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="sounds\battleMusic.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\buttonClick.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\enemyDeath.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\menuMusic.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\spaceshipDeath.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\spaceshipShot.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="tlo.jpg" />
     <Resource Include="zdjecia\invader1.gif" />
     <Resource Include="zdjecia\invader2.gif" />
