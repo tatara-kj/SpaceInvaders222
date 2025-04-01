@@ -9,18 +9,20 @@
       Title="gra">
 
     <Grid>
-        <Canvas Name="MyCanvas" Focusable="True" Background="Black" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
+        <!-- Tło GIF -->
+        <Image Name="BackgroundImage" Stretch="Fill" Panel.ZIndex="0"/>
+
+        <Canvas Name="MyCanvas" Focusable="True" Background="Transparent" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
             <Label Name="LivesAmount" Foreground="White" FontSize="16" FontWeight="ExtraBold" Panel.ZIndex="20">
                 Ilość żyć: 3
             </Label>
 
-            <Label Name="WavesLeft" Foreground="White" FontSize="16" FontWeight="ExtraBold" HorizontalAlignment="Left" 
-                   Canvas.Left="622" VerticalAlignment="Center" Panel.ZIndex="20">
+            <Label Name="WavesLeft" Foreground="White" FontSize="16" FontWeight="ExtraBold" Canvas.Left="622" VerticalAlignment="Center" Panel.ZIndex="20">
                 Pozostałe fale: 1
             </Label>
 
-            <Rectangle Name="Player" Fill="White" Height="65" Width="56" Canvas.Left="372" Canvas.Top="314" 
-                       HorizontalAlignment="Center" VerticalAlignment="Top" Panel.ZIndex="10"></Rectangle>
+            <Image Name="Player" Width="56" Height="65" Canvas.Left="372" Canvas.Top="314" Panel.ZIndex="10"/>
+
         </Canvas>
     </Grid>
 </Page>

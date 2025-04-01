@@ -14,5 +14,9 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/menumusic.mp3")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/spaceshipdeath.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/spaceshipshot.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("zdjecia/statek.gif")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("zdjecia/tlo.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("zdjecia/tlo_gra.gif")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("zdjecia/tlo_gra.jpg")]
 
 

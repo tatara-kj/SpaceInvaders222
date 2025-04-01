@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "M1PeHeeYp/s=",
+  "dgSpecHash": "Ry05Q/+su0U=",
   "success": true,
   "projectFilePath": "D:\\jtatruch_git\\SpaceInvader222\\SpaceIntruder\\SpaceIntruder.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\jtataruch1\\.nuget\\packages\\wpfanimatedgif\\2.0.2\\wpfanimatedgif.2.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

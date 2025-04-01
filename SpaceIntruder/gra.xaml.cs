@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-
+using WpfAnimatedGif;
 namespace SpaceIntruder
 {
     /// <summary>
@@ -63,11 +63,32 @@ namespace SpaceIntruder
             _gameTimer.Interval = TimeSpan.FromMilliseconds(20);
             _gameTimer.Start();
 
-            _playerSkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/zdjecia/player.png"));
-            Player.Fill = _playerSkin;
+            LoadPlayerGif(); // Wczytaj GIF dla statku
 
             MyCanvas.Focus();
             MakeEnemies(_level1Waves[0]);
+
+            LoadAnimatedBackground(); // Jeśli masz animowane tło
+        }
+
+        private void LoadPlayerGif()
+        {
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri("pack://application:,,,/zdjecia/statek.gif");
+            image.EndInit();
+
+            ImageBehavior.SetAnimatedSource(Player, image); // Ustaw animację GIF-a dla statku
+        }
+
+        private void LoadAnimatedBackground()
+        {
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri("pack://application:,,,/zdjecia/tlo_gra.gif"); // Ścieżka do pliku GIF
+            image.EndInit();
+
+            ImageBehavior.SetAnimatedSource(BackgroundImage, image); // Ustawienie animacji GIF
         }
 
         private void GameLoop(object? sender, EventArgs e)

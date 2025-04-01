@@ -82,3 +82,10 @@ D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\bu
 D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\enemyDeath.wav
 D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\spaceshipDeath.wav
 D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\sounds\spaceshipShot.wav
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\zdjecia\tlo.jpg
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\zdjecia\statek.gif
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\zdjecia\tlo_gra.gif
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\zdjecia\tlo_gra.jpg
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\bin\Debug\net8.0-windows\WpfAnimatedGif.dll
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\obj\Debug\net8.0-windows\SpaceIntruder.csproj.AssemblyReference.cache
+D:\jtatruch_git\SpaceInvader222\SpaceIntruder\obj\Debug\net8.0-windows\SpaceInt.72CB397A.Up2Date
