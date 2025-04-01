@@ -26,14 +26,20 @@ namespace SpaceIntruder
         DispatcherTimer _gameTimer = new DispatcherTimer();
         ImageBrush _playerSkin = new ImageBrush();
         List<Rectangle> _itemsToRemove = new List<Rectangle>();
-        int[] _level1Waves = { 5, 10, 15 };
+        Rectangle _chargedSpecial = new Rectangle();
+        int[] _level1Waves = { 15, 20, 30 };
         bool _goLeft, _goRight;
         bool _isGameOver;
         bool _isRecoveringFromDmg;
+        bool _isChargingSpecial;
+        bool _readyToReleaseSpecial;
+        bool _isSpecialAvailable = true;
         float _dmgRecoveryTimer = 2.5f;
         float _savedDmgRecoveryTimer;
         float _pShootingCooldown = 0.8f;
         float _savedPShootingCooldown;
+        float _pSpecialChargeTime = 2f;
+        float _savedPSpecialChargeTime;
         int _enemyImages;
         int _bulletTimer;
         int _bulletTimerLimit = 90;
@@ -48,6 +54,7 @@ namespace SpaceIntruder
 
             _savedDmgRecoveryTimer = _dmgRecoveryTimer;
             _savedPShootingCooldown = _pShootingCooldown;
+            _savedPSpecialChargeTime = _pSpecialChargeTime;
 
             Application.Current.MainWindow.Height = 500;
             Application.Current.MainWindow.Width = 800;
@@ -65,30 +72,35 @@ namespace SpaceIntruder
 
         private void GameLoop(object? sender, EventArgs e)
         {
-            _pShootingCooldown -= 0.1f;
+            if (_isChargingSpecial && _isSpecialAvailable) {
+                _pSpecialChargeTime -= 0.1f;
 
-            if(_pShootingCooldown < 0)
-            {
-                _pShootingCooldown = _savedPShootingCooldown;
+                if (_pSpecialChargeTime < 0) {
+                    _isChargingSpecial = false;
+                    _isSpecialAvailable = false;
+                    _pSpecialChargeTime = _savedPSpecialChargeTime;
 
-                Rectangle newBullet = new Rectangle
-                {
-                    Tag = "bullet",
-                    Height = 20,
-                    Width = 5,
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Red
-                };
+                    _chargedSpecial = new Rectangle {
+                        Tag = "chargedSpecial",
+                        Height = 30,
+                        Width = 12,
+                        Fill = Brushes.Blue,
+                        Stroke = Brushes.White
+                    };
 
-                Canvas.SetTop(newBullet, Canvas.GetTop(Player) + newBullet.Height);
-                Canvas.SetLeft(newBullet, Canvas.GetLeft(Player) + Player.Width / 2 - newBullet.Width / 2);
-                MyCanvas.Children.Add(newBullet);
+                    Canvas.SetTop(_chargedSpecial, Canvas.GetTop(Player) + _chargedSpecial.Height);
+                    Canvas.SetLeft(_chargedSpecial, Canvas.GetLeft(Player) + Player.Width / 2 - _chargedSpecial.Width / 2);
+                    Panel.SetZIndex(_chargedSpecial, 12);
+                    MyCanvas.Children.Add(_chargedSpecial);
+                    _readyToReleaseSpecial = true;
+                }
             }
 
             WavesLeft.Content = "Pozostałe fale: " + (_level1Waves.Length - _currentWave - 1);
 
+            AutoShooting();
             RecoveryTimer();
-            Rect playerHitBox = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);
+            Rect playerHitBox = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player) + 40, Player.Width, Player.Height - 40);
 
             if (_goLeft && Canvas.GetLeft(Player) > 0)
             {
@@ -111,13 +123,17 @@ namespace SpaceIntruder
 
             foreach (var x in MyCanvas.Children.OfType<Rectangle>())
             {
-                if (x is Rectangle && (string)x.Tag == "bullet")
+                if (x is Rectangle && ((string)x.Tag == "bullet" || (string)x.Tag == "specialBullet"))
                 {
                     Canvas.SetTop(x, Canvas.GetTop(x) - 20);
 
-                    if(Canvas.GetTop(x) < 10)
+                    if(Canvas.GetTop(x) < 0)
                     {
                         _itemsToRemove.Add(x);
+
+                        if((string)x.Tag == "specialBullet"){
+                            _isSpecialAvailable = true;
+                        }
                     }
 
                     Rect bullet = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
@@ -127,7 +143,10 @@ namespace SpaceIntruder
                             Rect enemy = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
 
                             if (bullet.IntersectsWith(enemy)) {
-                                _itemsToRemove.Add(x);
+                                if ((string)x.Tag == "bullet") {
+                                    _itemsToRemove.Add(x);
+                                }
+
                                 _itemsToRemove.Add(y);
                                 _totalEnemies -= 1;
                                 break;
@@ -153,6 +172,7 @@ namespace SpaceIntruder
                         ProcessDmgTaken("Koniec gry! Zabił cię najeźdźca");
                     }
                 }
+
                 if (x is Rectangle && (string)x.Tag == "enemyBullet")
                 {
                     Canvas.SetTop(x, Canvas.GetTop(x) + 10);
@@ -165,6 +185,7 @@ namespace SpaceIntruder
                     Rect enemyBulletHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
                     if (playerHitBox.IntersectsWith(enemyBulletHitBox)) {
+                        _itemsToRemove.Add(x);
                         ProcessDmgTaken("Koniec gry! Zabił cię wrogi pocisk");
                     }
                 }
@@ -203,20 +224,12 @@ namespace SpaceIntruder
             }
 
             if (e.Key == Key.Space) {
-                Rectangle newBullet = new Rectangle {
-                    Tag = "bullet",
-                    Height = 30,
-                    Width = 12,
-                    Fill = Brushes.Blue,
-                    Stroke = Brushes.White
-                };
+                if (_readyToReleaseSpecial) { return; }
 
-                Canvas.SetTop(newBullet, Canvas.GetTop(Player) + newBullet.Height);
-                Canvas.SetLeft(newBullet, Canvas.GetLeft(Player) + Player.Width / 2 - newBullet.Width / 2);
-                MyCanvas.Children.Add(newBullet);
+                _isChargingSpecial = true;
             }
 
-            if (e.Key == Key.Enter && _isGameOver) {
+            if (e.Key == Key.Enter) {
                 Process.Start(Process.GetCurrentProcess().MainModule.FileName);
                 Application.Current.Shutdown();
             }
@@ -232,6 +245,16 @@ namespace SpaceIntruder
             if (e.Key == Key.Right || e.Key == Key.D)
             {
                 _goRight = false;
+            }
+
+            if (e.Key == Key.Space) {
+                _isChargingSpecial = false;
+                _pSpecialChargeTime = _savedPSpecialChargeTime;
+
+                if (_readyToReleaseSpecial) {
+                    _chargedSpecial.Tag = "specialBullet";
+                    _readyToReleaseSpecial = false;
+                }
             }
         }
 
@@ -249,6 +272,7 @@ namespace SpaceIntruder
 
             Canvas.SetTop(enemyBullet, y);
             Canvas.SetLeft(enemyBullet, x);
+            Panel.SetZIndex(enemyBullet, 17);
             MyCanvas.Children.Add(enemyBullet);
         }
 
@@ -271,6 +295,7 @@ namespace SpaceIntruder
 
                 Canvas.SetTop(newEnemy, 10);
                 Canvas.SetLeft(newEnemy, left);
+                Panel.SetZIndex(newEnemy, 15);
                 MyCanvas.Children.Add(newEnemy);
                 left -= 60;
 
@@ -308,6 +333,27 @@ namespace SpaceIntruder
                         enemySkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/zdjecia/invader8.gif"));
                         break;
                 }
+            }
+        }
+
+        private void AutoShooting() {
+            _pShootingCooldown -= 0.1f;
+
+            if (_pShootingCooldown < 0) {
+                _pShootingCooldown = _savedPShootingCooldown;
+
+                Rectangle newBullet = new Rectangle {
+                    Tag = "bullet",
+                    Height = 20,
+                    Width = 5,
+                    Fill = Brushes.White,
+                    Stroke = Brushes.Red
+                };
+
+                Canvas.SetTop(newBullet, Canvas.GetTop(Player) + newBullet.Height);
+                Canvas.SetLeft(newBullet, Canvas.GetLeft(Player) + Player.Width / 2 - newBullet.Width / 2);
+                Panel.SetZIndex(newBullet, 11);
+                MyCanvas.Children.Add(newBullet);
             }
         }
 
