@@ -19,7 +19,7 @@
                 Pozostałe fale: 1
             </Label>
 
-            <Rectangle Name="Player" Fill="White" Height="65" Width="56" Canvas.Left="372" Canvas.Top="314" 
+            <Rectangle Name="Player" Fill="White" Height="64" Width="56" Canvas.Left="372" Canvas.Top="402" 
                        HorizontalAlignment="Center" VerticalAlignment="Top" Panel.ZIndex="10"></Rectangle>
         </Canvas>
     </Grid>
