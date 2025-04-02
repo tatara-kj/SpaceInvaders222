@@ -93,7 +93,7 @@ namespace SpaceIntruder {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SpaceIntruder;component/gra.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SpaceIntruder;V1.0.0.0;component/gra.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\gra.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
