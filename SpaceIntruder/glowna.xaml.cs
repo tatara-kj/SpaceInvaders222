@@ -25,11 +25,11 @@ namespace SpaceIntruder
     {
         public glowna()
         {
-        
             InitializeComponent();
-       
         }
+
         private MediaPlayer player = new MediaPlayer();
+
         private void OdtworzDzwiek()
         {
         
@@ -49,6 +49,7 @@ namespace SpaceIntruder
                 MessageBox.Show("Plik dźwiękowy nie istnieje!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private void nowa_gra(object sender, RoutedEventArgs e)
         {
             

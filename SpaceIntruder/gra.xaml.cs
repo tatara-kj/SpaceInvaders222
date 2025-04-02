@@ -26,6 +26,7 @@ namespace SpaceIntruder
         DispatcherTimer _gameTimer = new DispatcherTimer();
         ImageBrush _playerSkin = new ImageBrush();
         List<Rectangle> _itemsToRemove = new List<Rectangle>();
+        List<Rectangle> _activeEnemies = new List<Rectangle>();
         Rectangle _chargedSpecial = new Rectangle();
         int[] _level1Waves = { 15, 20, 30 };
         bool _goLeft, _goRight;
@@ -38,11 +39,11 @@ namespace SpaceIntruder
         float _savedDmgRecoveryTimer;
         float _pShootingCooldown = 0.8f;
         float _savedPShootingCooldown;
-        float _pSpecialChargeTime = 2f;
+        float _pSpecialChargeTime = 1.5f;
         float _savedPSpecialChargeTime;
         int _enemyImages;
         int _bulletTimer;
-        int _bulletTimerLimit = 90;
+        int _bulletTimerLimit = 70;
         int _totalEnemies;
         int _enemySpeed = 4;
         int _livesAmount = 3;
@@ -56,8 +57,8 @@ namespace SpaceIntruder
             _savedPShootingCooldown = _pShootingCooldown;
             _savedPSpecialChargeTime = _pSpecialChargeTime;
 
-            Application.Current.MainWindow.Height = 500;
-            Application.Current.MainWindow.Width = 800;
+            //Application.Current.MainWindow.Height = 500;
+            //Application.Current.MainWindow.Width = 800;
 
             _gameTimer.Tick += GameLoop;
             _gameTimer.Interval = TimeSpan.FromMilliseconds(20);
@@ -133,10 +134,15 @@ namespace SpaceIntruder
             }
 
             _bulletTimer -= 3;
+            Random rand = new Random();
 
             if(_bulletTimer < 0)
             {
-                EnemyBulletMaker(Canvas.GetLeft(Player) + 20, 10);
+                if(_activeEnemies.Count() < 0) { return; }
+
+                Rectangle randomEnemy = _activeEnemies[rand.Next(0, _activeEnemies.Count())];
+                EnemyBulletMaker(Canvas.GetLeft(randomEnemy) + randomEnemy.Width / 2, Canvas.GetTop(randomEnemy));
+
                 _bulletTimer = _bulletTimerLimit;
             }
 
@@ -160,7 +166,7 @@ namespace SpaceIntruder
                     Rect bullet = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
                     foreach (var y in MyCanvas.Children.OfType<Rectangle>()) {
-                        if (y is Rectangle && (string)y.Tag == "enemy") {
+                        if (y is Rectangle && ((string)y.Tag == "enemy3" || (string)y.Tag == "enemy2" || (string)y.Tag == "enemy1")) {
                             Rect enemy = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
 
                             if (bullet.IntersectsWith(enemy)) {
@@ -168,15 +174,28 @@ namespace SpaceIntruder
                                     _itemsToRemove.Add(x);
                                 }
 
-                                _itemsToRemove.Add(y);
-                                _totalEnemies -= 1;
+                                string a = y.Tag.ToString();
+                                int enemyHp = int.Parse(a[5].ToString());
+
+                                if (enemyHp < 2 || (string)x.Tag == "specialBullet")
+                                {
+                                    _itemsToRemove.Add(y);
+                                    _activeEnemies.Remove(y);
+                                    _totalEnemies -= 1;
+                                }
+                                else
+                                {
+                                    enemyHp--;
+                                    y.Tag = "enemy" + enemyHp;
+                                }
+
                                 break;
                             }
                         }
                     }
                 }
 
-                if (x is Rectangle && (string)x.Tag == "enemy")
+                if (x is Rectangle && ((string)x.Tag == "enemy3" || (string)x.Tag == "enemy2" || (string)x.Tag == "enemy1"))
                 {
                     enemiesDetected++;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) + _enemySpeed);
@@ -228,6 +247,7 @@ namespace SpaceIntruder
                 {
                     MakeEnemies(_level1Waves[_currentWave]);
                     _enemySpeed += 2;
+                    _bulletTimerLimit -= 10;
                 }
             }
         }
@@ -308,16 +328,17 @@ namespace SpaceIntruder
 
                 Rectangle newEnemy = new Rectangle
                 {
-                    Tag = "enemy",
+                    Tag = "enemy3",
                     Height = 45,
                     Width = 45,
-                    Fill = enemySkin,
+                    Fill = enemySkin
                 };
 
                 Canvas.SetTop(newEnemy, 10);
                 Canvas.SetLeft(newEnemy, left);
                 Panel.SetZIndex(newEnemy, 15);
                 MyCanvas.Children.Add(newEnemy);
+                _activeEnemies.Add(newEnemy);
                 left -= 60;
 
                 _enemyImages++;
