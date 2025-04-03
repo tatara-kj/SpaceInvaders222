@@ -59,7 +59,7 @@ namespace SpaceIntruder
             _savedPShootingCooldown = _pShootingCooldown;
             _savedPSpecialChargeTime = _pSpecialChargeTime;
 
-            Application.Current.MainWindow.Height = 500;
+            Application.Current.MainWindow.Height = 530;
             Application.Current.MainWindow.Width = 800;
 
             _gameTimer.Tick += GameLoop;
@@ -99,7 +99,7 @@ namespace SpaceIntruder
             WavesLeft.Content = "Pozostałe fale: " + (_level1Waves.Length - _currentWave - 1);
 
             ChargeSpecialBullet();
-            AutoShooting();
+            //AutoShooting();
             RecoveryTimer();
 
             if (_goLeft && Canvas.GetLeft(Player) > 0)
@@ -169,18 +169,15 @@ namespace SpaceIntruder
 
                                 int enemyHp = _enemies[y].HP;
 
-                                if (enemyHp < 2 || (string)x.Tag == "specialBullet")
+                                if (enemyHp < 2)
                                 {
                                     _itemsToRemove.Add(y);
                                     _activeEnemies.Remove(y);
-                                    _enemies.Remove(y);
                                     enemiesDetected--;
                                 }
-                                else
-                                {
-                                    enemyHp--;
-                                    _enemies[y].HP = enemyHp;
-                                }
+                                else if ((string)x.Tag == "specialBullet") { enemyHp -= 3; } else { enemyHp--; }
+
+                                _enemies[y].HP = enemyHp;
 
                                 break;
                             }
@@ -251,6 +248,7 @@ namespace SpaceIntruder
                 {
                     _enemySpeed += 2;
                     _bulletTimerLimit -= 10;
+                    _enemies = new Dictionary<Rectangle, Enemy>();
                     MakeEnemies(_level1Waves[_currentWave]);
                 }
             }
@@ -355,12 +353,22 @@ namespace SpaceIntruder
                     Fill = enemySkin
                 };
 
+                Enemy enemyProperties = new Enemy();
+                enemyProperties.HP = 6;
+                Random rand = new Random();
+
+                if (rand.Next(0, 5) == 0)
+                {
+                    newEnemy.Fill = Brushes.Aqua;
+                    newEnemy.Opacity = 0.8;
+                }
+
                 Canvas.SetTop(newEnemy, 10);
                 Canvas.SetLeft(newEnemy, left);
                 Panel.SetZIndex(newEnemy, 15);
                 MyCanvas.Children.Add(newEnemy);
                 _activeEnemies.Add(newEnemy);
-                _enemies.Add(newEnemy, new Enemy());
+                _enemies.Add(newEnemy, enemyProperties);
                 left -= 60;
 
                 _enemyImages++;
@@ -417,7 +425,7 @@ namespace SpaceIntruder
                         Stroke = Brushes.White
                     };
 
-                    Canvas.SetTop(_chargedSpecial, Canvas.GetTop(Player) + _chargedSpecial.Height);
+                    Canvas.SetTop(_chargedSpecial, Canvas.GetTop(Player) + _chargedSpecial.Height - 10);
                     Canvas.SetLeft(_chargedSpecial, Canvas.GetLeft(Player) + Player.Width / 2 - _chargedSpecial.Width / 2);
                     Panel.SetZIndex(_chargedSpecial, 12);
                     MyCanvas.Children.Add(_chargedSpecial);

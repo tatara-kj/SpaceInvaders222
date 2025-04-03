@@ -21,7 +21,7 @@
                 Pozostałe fale: 1
             </Label>
 
-            <Image Name="Player" Width="56" Height="65" Canvas.Left="372" Canvas.Top="416" Panel.ZIndex="10"/>
+            <Image Name="Player" Width="56" Height="64" Canvas.Left="372" Canvas.Top="422" Panel.ZIndex="10"/>
 
         </Canvas>
     </Grid>
