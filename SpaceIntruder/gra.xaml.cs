@@ -27,8 +27,10 @@ namespace SpaceIntruder
         ImageBrush _playerSkin = new ImageBrush();
         List<Rectangle> _itemsToRemove = new List<Rectangle>();
         List<Rectangle> _activeEnemies = new List<Rectangle>();
+        Dictionary<Rectangle, Enemy> _enemies = new Dictionary<Rectangle, Enemy>();
+        Dictionary<Rectangle, EnemyChaser> _enemyChasers = new Dictionary<Rectangle, EnemyChaser>();
         Rectangle _chargedSpecial = new Rectangle();
-        int[] _level1Waves = { 15, 20, 30 };
+        int[] _level1Waves = { 30, 20, 30 };
         bool _goLeft, _goRight;
         bool _isGameOver;
         bool _isRecoveringFromDmg;
@@ -37,15 +39,15 @@ namespace SpaceIntruder
         bool _isSpecialAvailable = true;
         float _dmgRecoveryTimer = 2.5f;
         float _savedDmgRecoveryTimer;
-        float _pShootingCooldown = 0.8f;
+        float _pShootingCooldown = 1f;
         float _savedPShootingCooldown;
-        float _pSpecialChargeTime = 1.5f;
+        float _pSpecialChargeTime = 3f;
         float _savedPSpecialChargeTime;
         int _enemyImages;
         int _bulletTimer;
         int _bulletTimerLimit = 70;
         int _totalEnemies;
-        int _enemySpeed = 4;
+        int _enemySpeed = 8;
         int _livesAmount = 3;
         int _currentWave = 0;
 
@@ -57,8 +59,8 @@ namespace SpaceIntruder
             _savedPShootingCooldown = _pShootingCooldown;
             _savedPSpecialChargeTime = _pSpecialChargeTime;
 
-            //Application.Current.MainWindow.Height = 500;
-            //Application.Current.MainWindow.Width = 800;
+            Application.Current.MainWindow.Height = 500;
+            Application.Current.MainWindow.Width = 800;
 
             _gameTimer.Tick += GameLoop;
             _gameTimer.Interval = TimeSpan.FromMilliseconds(20);
@@ -73,44 +75,32 @@ namespace SpaceIntruder
 
         private void GameLoop(object? sender, EventArgs e)
         {
-            if (_isChargingSpecial && _isSpecialAvailable) {
-                _pSpecialChargeTime -= 0.1f;
-
-                if (_pSpecialChargeTime < 0) {
-                    _isChargingSpecial = false;
-                    _isSpecialAvailable = false;
-                    _pSpecialChargeTime = _savedPSpecialChargeTime;
-
-                    _chargedSpecial = new Rectangle {
-                        Tag = "chargedSpecial",
-                        Height = 30,
-                        Width = 12,
-                        Fill = Brushes.Blue,
-                        Stroke = Brushes.White
-                    };
-
-                    Canvas.SetTop(_chargedSpecial, Canvas.GetTop(Player) + _chargedSpecial.Height);
-                    Canvas.SetLeft(_chargedSpecial, Canvas.GetLeft(Player) + Player.Width / 2 - _chargedSpecial.Width / 2);
-                    Panel.SetZIndex(_chargedSpecial, 12);
-                    MyCanvas.Children.Add(_chargedSpecial);
-                    _readyToReleaseSpecial = true;
-                }
-            }
-
             WavesLeft.Content = "Pozostałe fale: " + (_level1Waves.Length - _currentWave - 1);
 
+            ChargeSpecialBullet();
             AutoShooting();
             RecoveryTimer();
-            Rect playerHitBox = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player) + 40, Player.Width, Player.Height - 40);
 
             if (_goLeft && Canvas.GetLeft(Player) > 0)
             {
-                Canvas.SetLeft(Player, Canvas.GetLeft(Player) - 10);
+                if(_isChargingSpecial && _isSpecialAvailable) {
+                    Canvas.SetLeft(Player, Canvas.GetLeft(Player) - 5);
+                }
+                else {
+                    Canvas.SetLeft(Player, Canvas.GetLeft(Player) - 10);
+                }
             }
             if (_goRight && Canvas.GetLeft(Player) + 80 < Application.Current.MainWindow.Width)
             {
-                Canvas.SetLeft(Player, Canvas.GetLeft(Player) + 10);
+                if (_isChargingSpecial && _isSpecialAvailable) {
+                    Canvas.SetLeft(Player, Canvas.GetLeft(Player) + 5);
+                }
+                else {
+                    Canvas.SetLeft(Player, Canvas.GetLeft(Player) + 10);
+                }
             }
+
+            Rect playerHitBox = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player) + 10, Player.Width, Player.Height - 10);
 
             _bulletTimer -= 3;
             Random rand = new Random();
@@ -120,7 +110,10 @@ namespace SpaceIntruder
                 if(_activeEnemies.Count() < 0) { return; }
 
                 Rectangle randomEnemy = _activeEnemies[rand.Next(0, _activeEnemies.Count())];
-                EnemyBulletMaker(Canvas.GetLeft(randomEnemy) + randomEnemy.Width / 2, Canvas.GetTop(randomEnemy));
+
+                if(Canvas.GetTop(randomEnemy) < 320) {
+                    EnemyBulletMaker(Canvas.GetLeft(randomEnemy) + randomEnemy.Width / 2, Canvas.GetTop(randomEnemy), Canvas.GetTop(randomEnemy) < 260);
+                }
 
                 _bulletTimer = _bulletTimerLimit;
             }
@@ -145,7 +138,7 @@ namespace SpaceIntruder
                     Rect bullet = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
                     foreach (var y in MyCanvas.Children.OfType<Rectangle>()) {
-                        if (y is Rectangle && ((string)y.Tag == "enemy3" || (string)y.Tag == "enemy2" || (string)y.Tag == "enemy1")) {
+                        if (y is Rectangle && (string)y.Tag == "enemy") {
                             Rect enemy = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
 
                             if (bullet.IntersectsWith(enemy)) {
@@ -153,19 +146,19 @@ namespace SpaceIntruder
                                     _itemsToRemove.Add(x);
                                 }
 
-                                string a = y.Tag.ToString();
-                                int enemyHp = int.Parse(a[5].ToString());
+                                int enemyHp = _enemies[y].HP;
 
                                 if (enemyHp < 2 || (string)x.Tag == "specialBullet")
                                 {
                                     _itemsToRemove.Add(y);
                                     _activeEnemies.Remove(y);
-                                    _totalEnemies -= 1;
+                                    _enemies.Remove(y);
+                                    enemiesDetected--;
                                 }
                                 else
                                 {
                                     enemyHp--;
-                                    y.Tag = "enemy" + enemyHp;
+                                    _enemies[y].HP = enemyHp;
                                 }
 
                                 break;
@@ -174,15 +167,20 @@ namespace SpaceIntruder
                     }
                 }
 
-                if (x is Rectangle && ((string)x.Tag == "enemy3" || (string)x.Tag == "enemy2" || (string)x.Tag == "enemy1"))
+                if (x is Rectangle && (string)x.Tag == "enemy")
                 {
                     enemiesDetected++;
-                    Canvas.SetLeft(x, Canvas.GetLeft(x) + _enemySpeed);
+                    Canvas.SetLeft(x, Canvas.GetLeft(x) + _enemySpeed * _enemies[x].MoveDirection);
 
-                    if(Canvas.GetLeft(x) > 820)
+                    if(_enemies[x].MoveDirection == 1 && Canvas.GetLeft(x) > 820)
                     {
-                        Canvas.SetLeft(x, -80);
-                        Canvas.SetTop(x, Canvas.GetTop(x) + (x.Height + 10));
+                        // Canvas.SetLeft(x, -80);
+                        Canvas.SetTop(x, Canvas.GetTop(x) + (x.Height + 8));
+                        _enemies[x].MoveDirection = -1;
+                    }
+                    else if(_enemies[x].MoveDirection == -1 && Canvas.GetLeft(x) < 0) {
+                        Canvas.SetTop(x, Canvas.GetTop(x) + (x.Height + 8));
+                        _enemies[x].MoveDirection = 1;
                     }
 
                     Rect enemyHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
@@ -192,11 +190,17 @@ namespace SpaceIntruder
                     }
                 }
 
-                if (x is Rectangle && (string)x.Tag == "enemyBullet")
+                if (x is Rectangle && ((string)x.Tag == "enemyBullet" || (string)x.Tag == "enemyChaser"))
                 {
-                    Canvas.SetTop(x, Canvas.GetTop(x) + 10);
+                    if((string)x.Tag == "enemyChaser") {
+                        Canvas.SetLeft(x, Canvas.GetLeft(x) + (_enemyChasers[x].SavedPlayerLeftPos - Canvas.GetLeft(x)) / 10);
+                        Canvas.SetTop(x, Canvas.GetTop(x) + 8);
+                    }
+                    else {
+                        Canvas.SetTop(x, Canvas.GetTop(x) + 10);
+                    }
 
-                    if(Canvas.GetTop(x) > 840)
+                    if (Canvas.GetTop(x) > 840)
                     {
                         _itemsToRemove.Add(x);
                     }
@@ -224,9 +228,9 @@ namespace SpaceIntruder
                 }
                 else
                 {
-                    MakeEnemies(_level1Waves[_currentWave]);
                     _enemySpeed += 2;
                     _bulletTimerLimit -= 10;
+                    MakeEnemies(_level1Waves[_currentWave]);
                 }
             }
         }
@@ -278,28 +282,45 @@ namespace SpaceIntruder
             }
         }
 
-        private void EnemyBulletMaker(double x, double y)
+        private void EnemyBulletMaker(double x, double y, bool canMakeChaser)
         {
-            Rectangle enemyBullet = new Rectangle
-            {
-                Tag = "enemyBullet",
-                Height = 40,
-                Width = 15,
-                Fill = Brushes.Yellow,
-                Stroke = Brushes.Black,
-                StrokeThickness = 5
-            };
+            Random rand = new Random();
+            Rectangle enemyBullet = new Rectangle();
+
+            if(rand.Next(0, 5) == 0 && canMakeChaser) {
+                enemyBullet = new Rectangle {
+                    Tag = "enemyChaser",
+                    Height = 20,
+                    Width = 20,
+                    Fill = Brushes.OrangeRed,
+                    Stroke = Brushes.Black,
+                    StrokeThickness = 3
+                };
+
+                _enemyChasers.Add(enemyBullet, new EnemyChaser((float)(Canvas.GetLeft(Player) + Player.Width / 2 - 10)));
+                Panel.SetZIndex(enemyBullet, 18);
+            }
+            else {
+                enemyBullet = new Rectangle {
+                    Tag = "enemyBullet",
+                    Height = 40,
+                    Width = 15,
+                    Fill = Brushes.Yellow,
+                    Stroke = Brushes.Black,
+                    StrokeThickness = 3
+                };
+
+                Panel.SetZIndex(enemyBullet, 17);
+            }
 
             Canvas.SetTop(enemyBullet, y);
             Canvas.SetLeft(enemyBullet, x);
-            Panel.SetZIndex(enemyBullet, 17);
             MyCanvas.Children.Add(enemyBullet);
         }
 
         private void MakeEnemies(int limit)
         {
             int left = 0;
-            _totalEnemies = limit;
 
             for (int i = 0; i < limit; i++)
             {
@@ -307,7 +328,7 @@ namespace SpaceIntruder
 
                 Rectangle newEnemy = new Rectangle
                 {
-                    Tag = "enemy3",
+                    Tag = "enemy",
                     Height = 45,
                     Width = 45,
                     Fill = enemySkin
@@ -318,6 +339,7 @@ namespace SpaceIntruder
                 Panel.SetZIndex(newEnemy, 15);
                 MyCanvas.Children.Add(newEnemy);
                 _activeEnemies.Add(newEnemy);
+                _enemies.Add(newEnemy, new Enemy());
                 left -= 60;
 
                 _enemyImages++;
@@ -353,6 +375,32 @@ namespace SpaceIntruder
                     case 8:
                         enemySkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/zdjecia/invader8.gif"));
                         break;
+                }
+            }
+        }
+
+        private void ChargeSpecialBullet() {
+            if (_isChargingSpecial && _isSpecialAvailable) {
+                _pSpecialChargeTime -= 0.1f;
+
+                if (_pSpecialChargeTime < 0) {
+                    _isChargingSpecial = false;
+                    _isSpecialAvailable = false;
+                    _pSpecialChargeTime = _savedPSpecialChargeTime;
+
+                    _chargedSpecial = new Rectangle {
+                        Tag = "chargedSpecial",
+                        Height = 30,
+                        Width = 12,
+                        Fill = Brushes.Blue,
+                        Stroke = Brushes.White
+                    };
+
+                    Canvas.SetTop(_chargedSpecial, Canvas.GetTop(Player) + _chargedSpecial.Height);
+                    Canvas.SetLeft(_chargedSpecial, Canvas.GetLeft(Player) + Player.Width / 2 - _chargedSpecial.Width / 2);
+                    Panel.SetZIndex(_chargedSpecial, 12);
+                    MyCanvas.Children.Add(_chargedSpecial);
+                    _readyToReleaseSpecial = true;
                 }
             }
         }
