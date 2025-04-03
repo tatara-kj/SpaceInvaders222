@@ -26,6 +26,10 @@
     <None Remove="zdjecia\invader7.gif" />
     <None Remove="zdjecia\invader8.gif" />
     <None Remove="zdjecia\player.png" />
+    <None Remove="zdjecia\statek.gif" />
+    <None Remove="zdjecia\tlo.jpg" />
+    <None Remove="zdjecia\tlo_gra.gif" />
+    <None Remove="zdjecia\tlo_gra.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +51,22 @@
     <Content Include="sounds\spaceshipShot.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="zdjecia\statek.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zdjecia\tlo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zdjecia\tlo_gra.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zdjecia\tlo_gra.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,7 +82,6 @@
     <Resource Include="zdjecia\invader6.gif" />
     <Resource Include="zdjecia\invader7.gif" />
     <Resource Include="zdjecia\invader8.gif" />
-    <Resource Include="zdjecia\player.png" />
   </ItemGroup>
 
 </Project>
