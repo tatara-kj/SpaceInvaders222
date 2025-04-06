@@ -28,10 +28,10 @@ namespace SpaceIntruder
         List<Rectangle> _itemsToRemove = new List<Rectangle>();
         List<Rectangle> _enemiesWithDrop = new List<Rectangle>();
         List<Rectangle> _activeEnemies = new List<Rectangle>();
+        List<GameLevel> _gameLevels = new List<GameLevel>();
         Dictionary<Rectangle, Enemy> _enemies = new Dictionary<Rectangle, Enemy>();
         Dictionary<Rectangle, EnemyChaser> _enemyChasers = new Dictionary<Rectangle, EnemyChaser>();
         Rectangle _chargedSpecial = new Rectangle();
-        int[] _level1Waves = { 30, 30, 30 };
         bool _goLeft, _goRight;
         bool _isGameOver;
         bool _isRecoveringFromDmg;
@@ -44,18 +44,19 @@ namespace SpaceIntruder
         float _savedDmgRecoveryTimer;
         float _pShootingCooldown = 0.7f;
         float _savedPShootingCooldown;
-        float _pSpecialChargeTime = 2f;
+        float _pSpecialChargeTime = 1.5f;
         float _savedPSpecialChargeTime;
         int _enemiesNeededForBoost = 10;
         int _savedEnemiesNeededForBoost;
         int _enemyImages;
-        int _bulletTimer;
-        int _bulletTimerLimit = 70;
+        int _enemyBulletTimer;
+        int _enemyBulletTimerLimit = 70;
         int _enemySpeed = 8;
         int _livesAmount = 3;
-        int _currentWave = 0;
         int _points = 0;
         int _pointsMultiplier = 1;
+        int _currentWave = 1;
+        int _currentLevel = 1;
 
         public gra()
         {
@@ -76,7 +77,9 @@ namespace SpaceIntruder
             LoadPlayerGif(); // Wczytaj GIF dla statku
 
             MyCanvas.Focus();
-            MakeEnemies(_level1Waves[0]);
+
+            SetUpCurrentGameLevel();
+            MakeEnemies(_gameLevels[_currentLevel - 1].WaveEnemies[_currentWave - 1]);
 
             LoadAnimatedBackground(); // Jeśli masz animowane tło
         }
@@ -104,7 +107,8 @@ namespace SpaceIntruder
         private void GameLoop(object? sender, EventArgs e)
         {
             Points.Content = "Punkty: " + _points;
-            WavesLeft.Content = "Pozostałe fale: " + (_level1Waves.Length - _currentWave - 1);
+            CurrentLevel.Content = "Poziom: " + _currentLevel;
+            WavesLeft.Content = "Pozostałe fale: " + (3 - _currentWave);
 
             ChargeSpecialBullet();
             AutoShooting();
@@ -131,10 +135,10 @@ namespace SpaceIntruder
 
             Rect playerHitBox = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player) + 10, Player.Width, Player.Height - 10);
 
-            _bulletTimer -= 3;
+            _enemyBulletTimer -= 3;
             Random rand = new Random();
 
-            if(_bulletTimer < 0)
+            if(_enemyBulletTimer < 0)
             {
                 if(_activeEnemies.Count() < 0) { return; }
 
@@ -144,7 +148,7 @@ namespace SpaceIntruder
                     EnemyBulletMaker(Canvas.GetLeft(randomEnemy) + randomEnemy.Width / 2, Canvas.GetTop(randomEnemy), Canvas.GetTop(randomEnemy) < 260);
                 }
 
-                _bulletTimer = _bulletTimerLimit;
+                _enemyBulletTimer = _enemyBulletTimerLimit;
             }
 
             int enemiesDetected = 0;
@@ -285,7 +289,7 @@ namespace SpaceIntruder
                             CurrentBoost.Content = "Boost: +1 Życie";
                         }
                         else {
-                            switch(rand2.Next(0, 3)) {
+                            switch(rand2.Next(0, 1)) {
                                 case 0:
                                     _isShootingFaster = true;
                                     CurrentBoost.Content = "Boost: Szybkie Pociski";
@@ -333,18 +337,24 @@ namespace SpaceIntruder
             _enemiesWithDrop = [];
 
             if (enemiesDetected < 1) {
-                _currentWave++;
-
-                if(_currentWave > _level1Waves.Length - 1)
+                if(_currentWave > 2)
                 {
-                    ShowGameOverScreen("Wygrałeś!");
+                    if(_currentLevel > _gameLevels.Count() - 1) {
+                        ShowGameOverScreen("Wygrałeś!");
+                    }
+                    else {
+                        _currentLevel++;
+                        _currentWave = 1;
+                        _enemySpeed = _gameLevels[_currentLevel - 1].EnemySpeed;
+                        MakeEnemies(_gameLevels[_currentLevel - 1].WaveEnemies[_currentWave - 1]);
+                        _enemyBulletTimerLimit -= 10;
+                    }
                 }
                 else
                 {
+                    _currentWave++;
                     _enemySpeed += 2;
-                    _bulletTimerLimit -= 10;
-                    //_enemies = new Dictionary<Rectangle, Enemy>();
-                    MakeEnemies(_level1Waves[_currentWave]);
+                    MakeEnemies(_gameLevels[_currentLevel - 1].WaveEnemies[_currentWave - 1]);
                 }
             }
         }
@@ -451,14 +461,14 @@ namespace SpaceIntruder
                 Enemy enemyProperties = new Enemy();
                 Random rand = new Random();
 
-                if (rand.Next(0, 10) == 0) {
+                if (rand.Next(1, 101) == _gameLevels[_currentLevel - 1].FastEnemyChance) {
                     // Stwórz szybkiego kosmitę
                     enemyProperties.EnemyType = 1;
                     enemyProperties.SpeedMultiplier = 1.3f;
                     newEnemy.Fill = Brushes.Red;
                 }
 
-                if (rand.Next(0, 10) == 0)
+                if (rand.Next(1, 101) == _gameLevels[_currentLevel - 1].ShieldedEnemyChance)
                 {
                     // Stwórz opancerzonego kosmitę
                     enemyProperties.EnemyType = 2;
@@ -539,7 +549,7 @@ namespace SpaceIntruder
 
         private void AutoShooting() {
             if (_isShootingFaster) {
-                _pShootingCooldown -= 0.2f;
+                _pShootingCooldown -= 0.12f;
             }
             else {
                 _pShootingCooldown -= 0.1f;
@@ -604,6 +614,17 @@ namespace SpaceIntruder
             _isGameOver = true;
             _gameTimer.Stop();
             LivesAmount.Content = msg + "   Naciśnij Enter aby zagrać ponownie";
+        }
+
+        private void SetUpCurrentGameLevel() {
+            GameLevel level1 = new GameLevel(new int[] { 1, 2, 3 }, 0, 0, 8);
+            GameLevel level2 = new GameLevel(new int[] { 2, 4, 8 }, 20, 10, 10);
+            GameLevel level3 = new GameLevel(new int[] { 10, 15, 20 }, 40, 25, 12);
+            _gameLevels.Add(level1);
+            _gameLevels.Add(level2);
+            _gameLevels.Add(level3);
+
+            _enemySpeed = _gameLevels[_currentLevel - 1].EnemySpeed;
         }
     }
 }
