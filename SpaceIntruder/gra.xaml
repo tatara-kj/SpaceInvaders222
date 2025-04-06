@@ -13,11 +13,23 @@
         <Image Name="BackgroundImage" Stretch="Fill" Panel.ZIndex="0"/>
 
         <Canvas Name="MyCanvas" Focusable="True" Background="Transparent" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
-            <Label Name="LivesAmount" Foreground="White" FontSize="16" FontWeight="ExtraBold" Panel.ZIndex="20">
+            <Label Name="Points" Foreground="White" FontSize="16" FontWeight="ExtraBold" Panel.ZIndex="20">
+                Punkty: 0
+            </Label>
+
+            <Label Name="LivesAmount" Foreground="White" FontSize="16" FontWeight="ExtraBold" Panel.ZIndex="20" HorizontalAlignment="Center" Canvas.Top="31" VerticalAlignment="Top">
                 Ilość żyć: 3
             </Label>
 
-            <Label Name="WavesLeft" Foreground="White" FontSize="16" FontWeight="ExtraBold" Canvas.Left="622" VerticalAlignment="Center" Panel.ZIndex="20">
+            <Label Name="CurrentBoost" Foreground="White" FontSize="16" FontWeight="ExtraBold" Panel.ZIndex="20" HorizontalAlignment="Center" Canvas.Top="62" VerticalAlignment="Top">
+                
+            </Label>
+
+            <Label Name="CurrentLevel" Foreground="White" FontSize="16" FontWeight="ExtraBold" Canvas.Left="622" VerticalAlignment="Center" Panel.ZIndex="20">
+                Poziom: 1
+            </Label>
+
+            <Label Name="WavesLeft" Foreground="White" FontSize="16" FontWeight="ExtraBold" Canvas.Left="622" VerticalAlignment="Top" Panel.ZIndex="20" HorizontalAlignment="Center" Canvas.Top="31">
                 Pozostałe fale: 1
             </Label>
 

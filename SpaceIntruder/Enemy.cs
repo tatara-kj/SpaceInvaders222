@@ -10,5 +10,7 @@ namespace SpaceIntruder
     {
         public int MoveDirection = 1;
         public int HP = 3;
+        public float SpeedMultiplier = 1f;
+        public float EnemyType = 0; // 0-Normalny, 1-Szybki, 2-Opancerzony
     }
 }
