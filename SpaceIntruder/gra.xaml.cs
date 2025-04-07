@@ -626,5 +626,39 @@ namespace SpaceIntruder
 
             _enemySpeed = _gameLevels[_currentLevel - 1].EnemySpeed;
         }
+             private void ShowLoseScreen()
+     {
+         // Ukrywanie głównej gry i pokazanie ekranu przegranej
+         MyCanvas.Visibility = Visibility.Collapsed;
+         LoseScreen.Visibility = Visibility.Visible;
+     }
+
+     // Przycisk 'Zagraj Ponownie'
+     private void PlayAgain_Click(object sender, RoutedEventArgs e)
+     {
+         // umiesc kod do przerganej np:
+         // - Resetowanie liczby pozostałych wrogów
+         // - Ustawienie pozycji gracza na startową
+         // - Restartowanie timera
+         MyCanvas.Visibility = Visibility.Visible;  // Ponownie pokazanie planszy gry
+         LoseScreen.Visibility = Visibility.Collapsed;  // Ukrycie ekranu przegranej
+
+         // Możesz dodać logikę resetowania gry, na przykład:
+         // ResetGame();
+     }
+
+     // Przycisk 'Wróć do Menu'
+     private void BackToMenu_Click(object sender, RoutedEventArgs e)
+     {
+         // Powrót do strony głównej (menu głównego)
+         NavigationService.Navigate(new glowna()); 
+     }
+
+     // Przykład logiki zakończenia gry (np. brak wrogów)
+     private void EndGame()
+     {
+         // Jeśli nie ma wrogów (np. liczba wrogów wynosi 0), wywołaj ekran przegranej ,dodaj odpoweidni kod 
+         ShowLoseScreen();
+     }
     }
 }
