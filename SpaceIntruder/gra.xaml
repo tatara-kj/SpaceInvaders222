@@ -7,8 +7,8 @@
       mc:Ignorable="d" 
       Height="500" Width="800"
       Title="gra">
-<Page.Resources>
-    
+    <Page.Resources>
+
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Padding" Value="10,5"/>
@@ -24,9 +24,9 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
-    
 
-</Page.Resources>
+
+    </Page.Resources>
     <Grid>
         <!-- Tło GIF -->
         <Image Name="BackgroundImage" Stretch="Fill" Panel.ZIndex="0"/>
@@ -41,7 +41,7 @@
             </Label>
 
             <Label Name="CurrentBoost" Foreground="White" FontSize="16" FontWeight="ExtraBold" Panel.ZIndex="20" HorizontalAlignment="Center" Canvas.Top="62" VerticalAlignment="Top">
-                
+
             </Label>
 
             <Label Name="CurrentLevel" Foreground="White" FontSize="16" FontWeight="ExtraBold" Canvas.Left="622" VerticalAlignment="Center" Panel.ZIndex="20">
@@ -55,19 +55,21 @@
             <Image Name="Player" Width="56" Height="64" Canvas.Left="372" Canvas.Top="422" Panel.ZIndex="10"/>
 
         </Canvas>
- <!-- Ekran Przegranej, początkowo niewidoczny -->
- <Grid Name="LoseScreen" Background="Black" Opacity="0.7" Visibility="Collapsed">
-     <!-- Tło z obrazkiem gry w tle -->
-     <Image Name="GameBackground" Source="/zdjecia/player.png" Stretch="UniformToFill" Opacity="0.5" />
+        <!-- Ekran Przegranej, początkowo niewidoczny -->
+        <Grid Name="LoseScreen" Background="Black" Opacity="1" Visibility="Visible">
+            <!-- Tło z obrazkiem gry w tle -->
+            <Image Name="GameBackground" Source="/zdjecia/player.png" Stretch="UniformToFill" Opacity="0.5" />
 
-     <!-- Przesunięty tekst "PRZEGRANA" na ekranie -->
-     <TextBlock Text="PRZEGRANA" FontSize="48" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, -100, 0, 0"/>
+            <!-- Przesunięty tekst "PRZEGRANA" na ekranie -->
+            <TextBlock Text="PRZEGRANA" FontSize="48" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,122,0,0"/>
 
-     <!-- Przycisk Zagraj Ponownie -->
-     <Button Content="Zagraj Ponownie" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,0,0" Width="200" Height="50" Background="DarkSlateBlue" Foreground="White" FontWeight="Bold" FontSize="20" BorderBrush="White" BorderThickness="2" Click="PlayAgain_Click"  />
+            <TextBlock Name="FinalScore" Text="Wynik: 9999999" FontSize="25" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,199,0,0"/>
 
-     <!-- Przycisk Wróć do Menu -->
-     <Button Content="Wróć do Menu" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,150,0,0" Width="200" Height="50" Background="DarkSlateBlue" Foreground="White" FontWeight="Bold" FontSize="20" BorderBrush="White" BorderThickness="2" Click="BackToMenu_Click"  />
- </Grid>
+            <!-- Przycisk Zagraj Ponownie -->
+            <Button Content="Zagraj Ponownie" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,0,0" Width="200" Height="50" Background="DarkSlateBlue" Foreground="White" FontWeight="Bold" FontSize="20" BorderBrush="White" BorderThickness="2" Click="PlayAgain_Click"  />
+
+            <!-- Przycisk Wróć do Menu -->
+            <Button Content="Wróć do Menu" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,150,0,0" Width="200" Height="50" Background="DarkSlateBlue" Foreground="White" FontWeight="Bold" FontSize="20" BorderBrush="White" BorderThickness="2" Click="BackToMenu_Click"  />
+        </Grid>
     </Grid>
 </Page>

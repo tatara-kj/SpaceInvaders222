@@ -28,12 +28,12 @@ namespace SpaceIntruder
         List<Rectangle> _itemsToRemove = new List<Rectangle>();
         List<Rectangle> _enemiesWithDrop = new List<Rectangle>();
         List<Rectangle> _activeEnemies = new List<Rectangle>();
+        List<Rectangle> _explodingEnemies = new List<Rectangle>();
         List<GameLevel> _gameLevels = new List<GameLevel>();
         Dictionary<Rectangle, Enemy> _enemies = new Dictionary<Rectangle, Enemy>();
         Dictionary<Rectangle, EnemyChaser> _enemyChasers = new Dictionary<Rectangle, EnemyChaser>();
         Rectangle _chargedSpecial = new Rectangle();
         bool _goLeft, _goRight;
-        bool _isGameOver;
         bool _isRecoveringFromDmg;
         bool _isChargingSpecial;
         bool _readyToReleaseSpecial;
@@ -201,6 +201,7 @@ namespace SpaceIntruder
 
                                 if (enemyHp < 1) {
                                     _itemsToRemove.Add(y);
+                                    _explodingEnemies.Add(y);
                                     _activeEnemies.Remove(y);
                                     enemiesDetected--;
                                     _enemiesNeededForBoost--;
@@ -329,12 +330,18 @@ namespace SpaceIntruder
                 CurrentBoost.Content = "";
             }
 
+            foreach(Rectangle enemy in _explodingEnemies)
+            {
+                AddExplosionEffect(Canvas.GetLeft(enemy), Canvas.GetTop(enemy));
+            }
+
             foreach (Rectangle i in _itemsToRemove) {
                 MyCanvas.Children.Remove(i);
             }
 
             _itemsToRemove = [];
             _enemiesWithDrop = [];
+            _explodingEnemies = [];
 
             if (enemiesDetected < 1) {
                 if(_currentWave > 2)
@@ -378,8 +385,9 @@ namespace SpaceIntruder
             }
 
             if (e.Key == Key.Enter) {
-                Process.Start(Process.GetCurrentProcess().MainModule.FileName);
-                Application.Current.Shutdown();
+                //Process.Start(Process.GetCurrentProcess().MainModule.FileName);
+                //Application.Current.Shutdown();
+                MainWindow.Instance.RestartTheGame();
             }
         }
 
@@ -460,12 +468,12 @@ namespace SpaceIntruder
 
                 Enemy enemyProperties = new Enemy();
                 Random rand = new Random();
+                bool setShieldImg = false;
 
                 if (rand.Next(1, 101) <= _gameLevels[_currentLevel - 1].FastEnemyChance) {
                     // Stwórz szybkiego kosmitę
                     enemyProperties.EnemyType = 1;
                     enemyProperties.SpeedMultiplier = 1.3f;
-                    newEnemy.Fill = Brushes.Red;
                 }
 
                 if (rand.Next(1, 101) <= _gameLevels[_currentLevel - 1].ShieldedEnemyChance)
@@ -473,7 +481,7 @@ namespace SpaceIntruder
                     // Stwórz opancerzonego kosmitę
                     enemyProperties.EnemyType = 2;
                     enemyProperties.HP = 6;
-                    newEnemy.Fill = Brushes.Aqua;
+                    setShieldImg = true;
                 }
 
                 Canvas.SetTop(newEnemy, 10);
@@ -489,6 +497,12 @@ namespace SpaceIntruder
                 if (_enemyImages > 8)
                 {
                     _enemyImages = 1;
+                }
+
+                if (setShieldImg)
+                {
+                    enemySkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/zdjecia/brick-walls.png"));
+                    continue;
                 }
 
                 switch (_enemyImages)
@@ -519,6 +533,38 @@ namespace SpaceIntruder
                         break;
                 }
             }
+        }
+
+        async private void AddExplosionEffect(double left, double top)
+        {
+            ImageBrush effectSkin = new ImageBrush();
+
+            Rectangle newEffect = new Rectangle
+            {
+                Height = 80,
+                Width = 80,
+                Fill = effectSkin,
+                Opacity = 0.2
+            };
+
+            Canvas.SetLeft(newEffect, left - 20);
+            Canvas.SetTop(newEffect, top - 20);
+            effectSkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/zdjecia/eksplozja1.gif"));
+            MyCanvas.Children.Add(newEffect);
+            await Task.Delay(50);
+            newEffect.Opacity = 0.6f;
+            await Task.Delay(50);
+            newEffect.Opacity = 1f;
+            await Task.Delay(100);
+            newEffect.Opacity = 0.8f;
+            await Task.Delay(50);
+            newEffect.Opacity = 0.6f;
+            await Task.Delay(50);
+            newEffect.Opacity = 0.4f;
+            await Task.Delay(50);
+            newEffect.Opacity = 0.2f;
+            await Task.Delay(50);
+            newEffect.Opacity = 0f;
         }
 
         private void ChargeSpecialBullet() {
@@ -611,41 +657,36 @@ namespace SpaceIntruder
 
         private void ShowGameOverScreen(string msg)
         {
-            _isGameOver = true;
             _gameTimer.Stop();
+            EndGame();
             LivesAmount.Content = msg + "   Naciśnij Enter aby zagrać ponownie";
         }
 
         private void SetUpCurrentGameLevel() {
             GameLevel level1 = new GameLevel(new int[] { 1, 2, 3 }, 0, 0, 6);
-            GameLevel level2 = new GameLevel(new int[] { 2, 4, 8 }, 20, 10, 8);
-            GameLevel level3 = new GameLevel(new int[] { 10, 15, 20 }, 40, 25, 10);
+            GameLevel level2 = new GameLevel(new int[] { 5, 9, 12 }, 20, 10, 7);
+            GameLevel level3 = new GameLevel(new int[] { 15, 20, 30 }, 30, 20, 9);
             _gameLevels.Add(level1);
             _gameLevels.Add(level2);
             _gameLevels.Add(level3);
 
             _enemySpeed = _gameLevels[_currentLevel - 1].EnemySpeed;
         }
-             private void ShowLoseScreen()
-     {
-         // Ukrywanie głównej gry i pokazanie ekranu przegranej
-         MyCanvas.Visibility = Visibility.Collapsed;
-         LoseScreen.Visibility = Visibility.Visible;
-     }
+        private void ShowLoseScreen()
+        {
+            // Ukrywanie głównej gry i pokazanie ekranu przegranej
+            MyCanvas.Visibility = Visibility.Collapsed;
+            LoseScreen.Visibility = Visibility.Visible;
+            FinalScore.Text = "Wynik: " + _points;
+        }
 
-     // Przycisk 'Zagraj Ponownie'
-     private void PlayAgain_Click(object sender, RoutedEventArgs e)
-     {
-         // umiesc kod do przerganej np:
-         // - Resetowanie liczby pozostałych wrogów
-         // - Ustawienie pozycji gracza na startową
-         // - Restartowanie timera
-         MyCanvas.Visibility = Visibility.Visible;  // Ponownie pokazanie planszy gry
-         LoseScreen.Visibility = Visibility.Collapsed;  // Ukrycie ekranu przegranej
-
-         // Możesz dodać logikę resetowania gry, na przykład:
-         // ResetGame();
-     }
+         // Przycisk 'Zagraj Ponownie'
+        private void PlayAgain_Click(object sender, RoutedEventArgs e)
+        {
+            MyCanvas.Visibility = Visibility.Visible;  // Ponownie pokazanie planszy gry
+            LoseScreen.Visibility = Visibility.Collapsed;  // Ukrycie ekranu przegranej
+            MainWindow.Instance.RestartTheGame();
+        }
 
      // Przycisk 'Wróć do Menu'
      private void BackToMenu_Click(object sender, RoutedEventArgs e)

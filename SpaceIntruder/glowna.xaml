@@ -25,7 +25,7 @@
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Black" />
-                        <Setter Property="Content" Value="Nowa Gra" />
+                        <Setter Property="Content" Value="Graj" />
                         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                         <Setter Property="BorderBrush" Value="Transparent"/>
                         <Setter Property="Padding" Value="0"/>
@@ -43,7 +43,7 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Foreground" Value="Yellow"/>
                                 <Setter Property="FontSize" Value="28"/>
-                                <Setter Property="Content" Value="&lt;&lt; Nowa Gra &gt;&gt;" />
+                                <Setter Property="Content" Value="&lt;&lt; Graj &gt;&gt;" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -79,8 +79,37 @@
                 </Button.Style>
             </Button>
 
+            <!-- Przycisk Wyjdz -->
+            <Button Width="200" Height="50" Foreground="White" FontSize="24" Click="wyjdz_click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Black" />
+                        <Setter Property="Content" Value="Wyjdź" />
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Yellow"/>
+                                <Setter Property="FontSize" Value="28"/>
+                                <Setter Property="Content" Value="&lt;&lt; Wyjdź &gt;&gt;" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             <!-- Przycisk Wyniki -->
-            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center">
+            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center" Visibility="Hidden">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Black" />
@@ -108,35 +137,6 @@
                 </Button.Style>
             </Button>
 
-            <!-- Przycisk Wyjdz -->
-            <Button Width="200" Height="50" Foreground="White" FontSize="24" HorizontalAlignment="Center" Click="wyjdz_click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="Black" />
-                        <Setter Property="Content" Value="Wyjdź" />
-                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                        <Setter Property="BorderBrush" Value="Transparent"/>
-                        <Setter Property="Padding" Value="0"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="Yellow"/>
-                                <Setter Property="FontSize" Value="28"/>
-                                <Setter Property="Content" Value="&lt;&lt; Wyjdź &gt;&gt;" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            
         </StackPanel>
     </Grid>
 </Page>

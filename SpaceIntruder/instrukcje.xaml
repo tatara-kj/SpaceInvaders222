@@ -56,9 +56,10 @@
             <!-- Instrukcje sterowania -->
             <TextBlock Style="{StaticResource InstructionTextStyle}" FontWeight="Bold">
                 Sterowanie:<LineBreak/>
-                - Lewo:  Strzałka w lewo lub A<LineBreak/>
-                - Prawo: klawisze Strzałka w prawo lub D<LineBreak/>
-                - Strzał: Spacja
+                - Lot w lewo:  Strzałka w lewo lub A<LineBreak/>
+                - Lot w prawo: klawisze Strzałka w prawo lub D<LineBreak/>
+                - Ładowanie rakiety: Spacja (trzymaj)<LineBreak/>
+                - Wystrzał rakiety: Spacja (puść gdy jest załadowana)
             </TextBlock>
 
             <!-- Dodatkowe informacje -->

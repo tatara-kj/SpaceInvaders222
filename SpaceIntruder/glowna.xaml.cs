@@ -32,10 +32,7 @@ namespace SpaceIntruder
 
         private void OdtworzDzwiek()
         {
-        
-
             string sciezka = PathIO.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds", "buttonClick.wav");
-
 
             if (File.Exists(sciezka))
             {
@@ -52,7 +49,6 @@ namespace SpaceIntruder
 
         private void nowa_gra(object sender, RoutedEventArgs e)
         {
-            
             NavigationService.Navigate(new gra());
             OdtworzDzwiek();
         }

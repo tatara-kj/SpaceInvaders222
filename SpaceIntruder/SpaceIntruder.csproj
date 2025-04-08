@@ -17,6 +17,8 @@
     <None Remove="sounds\spaceshipDeath.wav" />
     <None Remove="sounds\spaceshipShot.wav" />
     <None Remove="tlo.jpg" />
+    <None Remove="zdjecia\brick-walls.png" />
+    <None Remove="zdjecia\eksplozja1.gif" />
     <None Remove="zdjecia\invader1.gif" />
     <None Remove="zdjecia\invader2.gif" />
     <None Remove="zdjecia\invader3.gif" />
@@ -74,6 +76,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="tlo.jpg" />
+    <Resource Include="zdjecia\brick-walls.png" />
+    <Resource Include="zdjecia\eksplozja1.gif" />
     <Resource Include="zdjecia\invader1.gif" />
     <Resource Include="zdjecia\invader2.gif" />
     <Resource Include="zdjecia\invader3.gif" />
