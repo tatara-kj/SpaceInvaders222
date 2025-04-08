@@ -50,8 +50,8 @@ namespace SpaceIntruder
         int _savedEnemiesNeededForBoost;
         int _enemyImages;
         int _enemyBulletTimer;
-        int _enemyBulletTimerLimit = 70;
-        int _enemySpeed = 8;
+        int _enemyBulletTimerLimit = 90;
+        int _enemySpeed = 6;
         int _livesAmount = 3;
         int _points = 0;
         int _pointsMultiplier = 1;
@@ -461,14 +461,14 @@ namespace SpaceIntruder
                 Enemy enemyProperties = new Enemy();
                 Random rand = new Random();
 
-                if (rand.Next(1, 101) == _gameLevels[_currentLevel - 1].FastEnemyChance) {
+                if (rand.Next(1, 101) <= _gameLevels[_currentLevel - 1].FastEnemyChance) {
                     // Stwórz szybkiego kosmitę
                     enemyProperties.EnemyType = 1;
                     enemyProperties.SpeedMultiplier = 1.3f;
                     newEnemy.Fill = Brushes.Red;
                 }
 
-                if (rand.Next(1, 101) == _gameLevels[_currentLevel - 1].ShieldedEnemyChance)
+                if (rand.Next(1, 101) <= _gameLevels[_currentLevel - 1].ShieldedEnemyChance)
                 {
                     // Stwórz opancerzonego kosmitę
                     enemyProperties.EnemyType = 2;
@@ -617,9 +617,9 @@ namespace SpaceIntruder
         }
 
         private void SetUpCurrentGameLevel() {
-            GameLevel level1 = new GameLevel(new int[] { 1, 2, 3 }, 0, 0, 8);
-            GameLevel level2 = new GameLevel(new int[] { 2, 4, 8 }, 20, 10, 10);
-            GameLevel level3 = new GameLevel(new int[] { 10, 15, 20 }, 40, 25, 12);
+            GameLevel level1 = new GameLevel(new int[] { 1, 2, 3 }, 0, 0, 6);
+            GameLevel level2 = new GameLevel(new int[] { 2, 4, 8 }, 20, 10, 8);
+            GameLevel level3 = new GameLevel(new int[] { 10, 15, 20 }, 40, 25, 10);
             _gameLevels.Add(level1);
             _gameLevels.Add(level2);
             _gameLevels.Add(level3);
