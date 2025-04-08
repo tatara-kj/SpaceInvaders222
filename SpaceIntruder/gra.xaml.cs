@@ -67,8 +67,8 @@ namespace SpaceIntruder
             _savedPSpecialChargeTime = _pSpecialChargeTime;
             _savedEnemiesNeededForBoost = _enemiesNeededForBoost;
 
-            //Application.Current.MainWindow.Height = 530;
-            //Application.Current.MainWindow.Width = 800;
+            Application.Current.MainWindow.Height = 530;
+            Application.Current.MainWindow.Width = 800;
 
             _gameTimer.Tick += GameLoop;
             _gameTimer.Interval = TimeSpan.FromMilliseconds(20);
