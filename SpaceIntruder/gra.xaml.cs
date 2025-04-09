@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -347,7 +348,7 @@ namespace SpaceIntruder
                 if(_currentWave > 2)
                 {
                     if(_currentLevel > _gameLevels.Count() - 1) {
-                        ShowGameOverScreen("Wygrałeś!");
+                        ShowWinScreen();
                     }
                     else {
                         _currentLevel++;
@@ -658,23 +659,29 @@ namespace SpaceIntruder
         private void ShowGameOverScreen(string msg)
         {
             _gameTimer.Stop();
-            EndGame();
             LivesAmount.Content = msg + "   Naciśnij Enter aby zagrać ponownie";
+            ShowEndScreen();
+        }
+
+        private void ShowWinScreen() {
+            _gameTimer.Stop();
+            GameOverText.Text = "Wygrałeś! :)";
+            ShowEndScreen();
         }
 
         private void SetUpCurrentGameLevel() {
-            GameLevel level1 = new GameLevel(new int[] { 1, 2, 3 }, 0, 0, 6);
-            GameLevel level2 = new GameLevel(new int[] { 5, 9, 12 }, 20, 10, 7);
-            GameLevel level3 = new GameLevel(new int[] { 15, 20, 30 }, 30, 20, 9);
+            GameLevel level1 = new GameLevel(new int[] { 3, 4, 5 }, 0, 0, 6);
+            GameLevel level2 = new GameLevel(new int[] { 7, 9, 12 }, 15, 10, 7);
+            GameLevel level3 = new GameLevel(new int[] { 15, 20, 30 }, 20, 12, 9);
             _gameLevels.Add(level1);
             _gameLevels.Add(level2);
             _gameLevels.Add(level3);
 
             _enemySpeed = _gameLevels[_currentLevel - 1].EnemySpeed;
         }
-        private void ShowLoseScreen()
+        private void ShowEndScreen()
         {
-            // Ukrywanie głównej gry i pokazanie ekranu przegranej
+            // Ukrywanie głównej gry i pokazanie ekranu końca gry
             MyCanvas.Visibility = Visibility.Collapsed;
             LoseScreen.Visibility = Visibility.Visible;
             FinalScore.Text = "Wynik: " + _points;
@@ -693,13 +700,6 @@ namespace SpaceIntruder
      {
          // Powrót do strony głównej (menu głównego)
          NavigationService.Navigate(new glowna()); 
-     }
-
-     // Przykład logiki zakończenia gry (np. brak wrogów)
-     private void EndGame()
-     {
-         // Jeśli nie ma wrogów (np. liczba wrogów wynosi 0), wywołaj ekran przegranej ,dodaj odpoweidni kod 
-         ShowLoseScreen();
      }
     }
 }

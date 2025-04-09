@@ -56,12 +56,12 @@
 
         </Canvas>
         <!-- Ekran Przegranej, początkowo niewidoczny -->
-        <Grid Name="LoseScreen" Background="Black" Opacity="1" Visibility="Visible">
+        <Grid Name="LoseScreen" Background="Black" Opacity="1" Visibility="Hidden">
             <!-- Tło z obrazkiem gry w tle -->
             <Image Name="GameBackground" Source="/zdjecia/player.png" Stretch="UniformToFill" Opacity="0.5" />
 
             <!-- Przesunięty tekst "PRZEGRANA" na ekranie -->
-            <TextBlock Text="PRZEGRANA" FontSize="48" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,122,0,0"/>
+            <TextBlock x:Name="GameOverText" Text="Przegrałeś :(" FontSize="48" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,122,0,0"/>
 
             <TextBlock Name="FinalScore" Text="Wynik: 9999999" FontSize="25" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,199,0,0"/>
 
